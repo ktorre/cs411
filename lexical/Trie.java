@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Trie {
 
-	public static int DEFAULT_SIZE = 100; // Default allocation size for symbol/next array
-	public static char DELIMITER = '@';
+	public static final int DEFAULT_SIZE = 100; // Default allocation size for symbol/next array
+	public static final char DELIMITER = '@';
 
 	private int[] switchArray;
 	private char[] symbolArray;
@@ -138,44 +138,36 @@ public class Trie {
 
 	//*************** OUTPUT ***************
 	public String toString() {
-		// Yeah this parts gross af, I'll make it pretty for display and code later, but for now you can see the data
 		String output = "";
 		for ( int i = 0; i < switchArray.length; i++ ) {
 			if ( switchArray[ i ] != -1 )
-				output += " " + (char)(i + 65) + " ";
+				output += String.format("%-3c", (char)(i + 65));		//Left-justify the character in a field of size 3
 		}
 		output += "\n";
 		for ( int i = 0; i < switchArray.length; i++ ) {
 			if ( switchArray[ i ] != -1 )
-				output += " " + switchArray[ i ] + " ";
+				output += String.format("%-3d", switchArray[ i ]);		//Left-justify the switchArray value in a field of size 3
 		}
 		output += "\n";
 		for ( int i = 0; i < nextEmpty; i++ ) {
-			if ( getNext( i ) > 10 )
-				output += " ";
-			output += " " + i + " ";
+			output += String.format("%-3d", i);		//Left-justify the value of i in a field of size 3
 		}
 		output += "\n";
 
 		for ( int i = 0; i < nextEmpty; i++ ) {
-			if ( getNext( i ) > 10 && i < 10 )
-				output += " ";
-			output += " " + getSymbol( i ) + " ";
+			output += String.format("%-3c", getSymbol( i ));	//Left-justify the Symbol at location i in a field of size 3
 		}
 		output += "\n";
 		for ( int i = 0; i < nextEmpty; i++ ) {
-			output += " ";
 			if ( getNext( i ) == -1 )
-				output += "-";
+				output += String.format("%-3c", '-');		//Left-justify a dash in a field of size 3
 			else
-				output += getNext( i );
-			output += " ";
+				output += String.format("%-3d", getNext( i ));	//Left-justify the next value in a field of size 3
 		}
 	
 		return output;
 	}
-
-
+	
 	//*********TESTMAIN*************
 	public static void main( String[] args ) {
 		Trie test = new Trie();
