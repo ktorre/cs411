@@ -52,8 +52,8 @@ public class Trie {
 
 	//*************** PUBLIC FUNCTIONS ***************
 	// Overload input function to allow for string input
-	public void inputWord( String word ) {
-		inputWord( word.toCharArray() );
+	public int inputWord( String word ) {
+		return inputWord( word.toCharArray() );
 	}
 
 	public int inputWord( char[] word ) {
@@ -66,6 +66,19 @@ public class Trie {
 			fillSymbolArray( symbolStartLocation, word );
 			return 0; // success
 		}
+	}
+	
+	public boolean containsWord( String word ) {
+		return containsWord( word.toCharArray() );
+	}
+	
+	public boolean containsWord( char[] word ) {
+		int head = ( (int)word[ 0 ] - 65 );
+		if ( head < 0 || head > 51 )
+			return false; // If not in alphabet, throw error
+		if( switchArray[ head ] == -1 )	//No words starting with this letter are present
+			return false;
+		return readSymbolArray( switchArray[ head ], word );
 	}
 
 	//*************** HELPER FUNCTIONS ***************
@@ -135,34 +148,70 @@ public class Trie {
 		return getNext( location );
 	}
 
+	private boolean readSymbolArray( int location, char[] word ) {
+		int letterNum = 1;	//Used to keep track of which letter is being checked
+		
+		/* 
+		 * Move character by character of the word looking in the symbolArray
+		 * for the same sequence of characters
+		*/
+		while( letterNum < word.length )
+		{
+			//If the characters are the same, increment both pointers
+			if(word[ letterNum ] == symbolArray[ location ])
+			{
+				letterNum++;
+				location++;
+			}
+			//Otherwise get the value of the nextArray at the current location
+			else
+			{
+				location = nextArray[ location ];
+				//If the nextArray is empty then the word is not there so return false
+				if(location == -1)
+					return false;
+			}
+		}
+		
+		/* 
+		 * At the end of the word, look for the delimiter.
+		 * Return true if the delimiter is at the current location
+		 */
+		do {
+			if(symbolArray[ location ] == '@')
+				return true;
+			location = nextArray[ location ];	//Not the delimiter, get the next location
+		} while(location != -1);
+		return false;	//The delimiter was not found therefore the word is not here
+	}
 
 	//*************** OUTPUT ***************
 	public String toString() {
 		String output = "";
 		for ( int i = 0; i < switchArray.length; i++ ) {
-			if ( switchArray[ i ] != -1 )
-				output += String.format("%-3c", (char)(i + 65));		//Left-justify the character in a field of size 3
+			//if ( switchArray[ i ] != -1 )
+				output += String.format("%2c ", (char)(i + 65));		//Left-justify the character in a field of size 3
 		}
 		output += "\n";
 		for ( int i = 0; i < switchArray.length; i++ ) {
-			if ( switchArray[ i ] != -1 )
-				output += String.format("%-3d", switchArray[ i ]);		//Left-justify the switchArray value in a field of size 3
+			//if ( switchArray[ i ] != -1 )
+				output += String.format("%2d ", switchArray[ i ]);		//Left-justify the switchArray value in a field of size 3
 		}
-		output += "\n";
+		output += "\n\n";
 		for ( int i = 0; i < nextEmpty; i++ ) {
-			output += String.format("%-3d", i);		//Left-justify the value of i in a field of size 3
+			output += String.format("%2d ", i);		//Left-justify the value of i in a field of size 3
 		}
 		output += "\n";
 
 		for ( int i = 0; i < nextEmpty; i++ ) {
-			output += String.format("%-3c", getSymbol( i ));	//Left-justify the Symbol at location i in a field of size 3
+			output += String.format("%2c ", getSymbol( i ));	//Left-justify the Symbol at location i in a field of size 3
 		}
 		output += "\n";
 		for ( int i = 0; i < nextEmpty; i++ ) {
 			if ( getNext( i ) == -1 )
-				output += String.format("%-3c", '-');		//Left-justify a dash in a field of size 3
+				output += String.format("%2c ", '-');		//Left-justify a dash in a field of size 3
 			else
-				output += String.format("%-3d", getNext( i ));	//Left-justify the next value in a field of size 3
+				output += String.format("%2d ", getNext( i ));	//Left-justify the next value in a field of size 3
 		}
 	
 		return output;
@@ -171,7 +220,10 @@ public class Trie {
 	//*********TESTMAIN*************
 	public static void main( String[] args ) {
 		Trie test = new Trie();
-		test.inputWord( "break" );
+		if( !test.containsWord( "break" ) )
+			test.inputWord( "break" );
+		if( !test.containsWord( "break" ) )
+			test.inputWord( "break" );
 		test.inputWord( "boolean" );
 		test.inputWord( "double" );
 		test.inputWord( "bit" );
@@ -179,7 +231,8 @@ public class Trie {
 		test.inputWord( "bot" );
 		test.inputWord( "bre" );
 		test.inputWord( "hippopotamus" );
-		test.inputWord( "hippo" );
+		if( !test.containsWord( "hippo" ) )
+			test.inputWord( "hippo" );
 		test.inputWord( "hiptoss" );
 		System.out.println( test );
 	}
