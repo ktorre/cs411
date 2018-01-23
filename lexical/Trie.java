@@ -58,7 +58,13 @@ public class Trie {
 
 	public int inputWord( char[] word ) {
 		// Making it return an int so we can use it for error handling/reporting
-		int head = ( (int)word[ 0 ] - 65 ); 
+		int head = ( (int)word[ 0 ] - 65 );
+		//Check for the 6 characters between 'Z' and 'a'
+		if ( head > 25 && head < 32 )
+			return -1; // If not in alphabet, throw error
+		//Account for the 6 characters between 'Z' and 'a'
+		if( head > 31 )
+			head -= 6;
 		if ( head < 0 || head > 51 )  { 
 			return -1; // If not in alphabet, throw error
 		} else {
@@ -74,6 +80,12 @@ public class Trie {
 	
 	public boolean containsWord( char[] word ) {
 		int head = ( (int)word[ 0 ] - 65 );
+		//Check for the 6 characters between 'Z' and 'a'
+		if ( head > 25 && head < 32 )
+			return false; // If not in alphabet, throw error
+		//Check for the 6 characters between 'Z' and 'a'
+		if( head > 31 )
+			head -= 6;
 		if ( head < 0 || head > 51 )
 			return false; // If not in alphabet, throw error
 		if( switchArray[ head ] == -1 )	//No words starting with this letter are present
@@ -189,8 +201,10 @@ public class Trie {
 	public String toString() {
 		String output = "";
 		for ( int i = 0; i < switchArray.length; i++ ) {
-			//if ( switchArray[ i ] != -1 )
+			if ( i < 26 )
 				output += String.format("%2c ", (char)(i + 65));		//Left-justify the character in a field of size 3
+			else
+				output += String.format("%2c ", (char)(i + 71));		//Left-justify the character in a field of size 3
 		}
 		output += "\n";
 		for ( int i = 0; i < switchArray.length; i++ ) {
@@ -234,6 +248,8 @@ public class Trie {
 		if( !test.containsWord( "hippo" ) )
 			test.inputWord( "hippo" );
 		test.inputWord( "hiptoss" );
+		if( !test.containsWord( "zebra" ))
+			test.inputWord( "zebra" );
 		System.out.println( test );
 	}
 }
