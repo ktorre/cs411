@@ -232,70 +232,70 @@ class Yylex {
 		/* 21 */ YY_NO_ANCHOR,
 		/* 22 */ YY_NO_ANCHOR,
 		/* 23 */ YY_NO_ANCHOR,
-		/* 24 */ YY_NOT_ACCEPT,
+		/* 24 */ YY_NO_ANCHOR,
 		/* 25 */ YY_NO_ANCHOR,
-		/* 26 */ YY_NOT_ACCEPT,
+		/* 26 */ YY_NO_ANCHOR,
 		/* 27 */ YY_NO_ANCHOR,
-		/* 28 */ YY_NOT_ACCEPT,
+		/* 28 */ YY_NO_ANCHOR,
 		/* 29 */ YY_NO_ANCHOR,
-		/* 30 */ YY_NOT_ACCEPT,
+		/* 30 */ YY_NO_ANCHOR,
 		/* 31 */ YY_NO_ANCHOR,
-		/* 32 */ YY_NOT_ACCEPT,
+		/* 32 */ YY_NO_ANCHOR,
 		/* 33 */ YY_NO_ANCHOR,
-		/* 34 */ YY_NOT_ACCEPT,
+		/* 34 */ YY_NO_ANCHOR,
 		/* 35 */ YY_NO_ANCHOR,
-		/* 36 */ YY_NOT_ACCEPT,
+		/* 36 */ YY_NO_ANCHOR,
 		/* 37 */ YY_NO_ANCHOR,
-		/* 38 */ YY_NOT_ACCEPT,
+		/* 38 */ YY_NO_ANCHOR,
 		/* 39 */ YY_NO_ANCHOR,
-		/* 40 */ YY_NOT_ACCEPT,
+		/* 40 */ YY_NO_ANCHOR,
 		/* 41 */ YY_NO_ANCHOR,
-		/* 42 */ YY_NOT_ACCEPT,
+		/* 42 */ YY_NO_ANCHOR,
 		/* 43 */ YY_NO_ANCHOR,
-		/* 44 */ YY_NOT_ACCEPT,
-		/* 45 */ YY_NOT_ACCEPT,
-		/* 46 */ YY_NOT_ACCEPT,
-		/* 47 */ YY_NOT_ACCEPT,
-		/* 48 */ YY_NOT_ACCEPT,
-		/* 49 */ YY_NOT_ACCEPT,
-		/* 50 */ YY_NOT_ACCEPT,
-		/* 51 */ YY_NOT_ACCEPT,
-		/* 52 */ YY_NOT_ACCEPT,
+		/* 44 */ YY_NO_ANCHOR,
+		/* 45 */ YY_NO_ANCHOR,
+		/* 46 */ YY_NO_ANCHOR,
+		/* 47 */ YY_NO_ANCHOR,
+		/* 48 */ YY_NO_ANCHOR,
+		/* 49 */ YY_NO_ANCHOR,
+		/* 50 */ YY_NO_ANCHOR,
+		/* 51 */ YY_NO_ANCHOR,
+		/* 52 */ YY_NO_ANCHOR,
 		/* 53 */ YY_NOT_ACCEPT,
-		/* 54 */ YY_NOT_ACCEPT,
+		/* 54 */ YY_NO_ANCHOR,
 		/* 55 */ YY_NOT_ACCEPT,
-		/* 56 */ YY_NOT_ACCEPT,
+		/* 56 */ YY_NO_ANCHOR,
 		/* 57 */ YY_NOT_ACCEPT,
-		/* 58 */ YY_NOT_ACCEPT,
+		/* 58 */ YY_NO_ANCHOR,
 		/* 59 */ YY_NOT_ACCEPT,
-		/* 60 */ YY_NOT_ACCEPT,
+		/* 60 */ YY_NO_ANCHOR,
 		/* 61 */ YY_NOT_ACCEPT,
-		/* 62 */ YY_NOT_ACCEPT,
+		/* 62 */ YY_NO_ANCHOR,
 		/* 63 */ YY_NOT_ACCEPT,
-		/* 64 */ YY_NOT_ACCEPT,
+		/* 64 */ YY_NO_ANCHOR,
 		/* 65 */ YY_NOT_ACCEPT,
-		/* 66 */ YY_NOT_ACCEPT,
+		/* 66 */ YY_NO_ANCHOR,
 		/* 67 */ YY_NOT_ACCEPT,
-		/* 68 */ YY_NOT_ACCEPT,
+		/* 68 */ YY_NO_ANCHOR,
 		/* 69 */ YY_NOT_ACCEPT,
-		/* 70 */ YY_NOT_ACCEPT,
+		/* 70 */ YY_NO_ANCHOR,
 		/* 71 */ YY_NOT_ACCEPT,
-		/* 72 */ YY_NOT_ACCEPT,
+		/* 72 */ YY_NO_ANCHOR,
 		/* 73 */ YY_NOT_ACCEPT,
-		/* 74 */ YY_NOT_ACCEPT,
+		/* 74 */ YY_NO_ANCHOR,
 		/* 75 */ YY_NOT_ACCEPT,
-		/* 76 */ YY_NOT_ACCEPT,
+		/* 76 */ YY_NO_ANCHOR,
 		/* 77 */ YY_NOT_ACCEPT,
-		/* 78 */ YY_NOT_ACCEPT,
+		/* 78 */ YY_NO_ANCHOR,
 		/* 79 */ YY_NOT_ACCEPT,
-		/* 80 */ YY_NOT_ACCEPT,
+		/* 80 */ YY_NO_ANCHOR,
 		/* 81 */ YY_NOT_ACCEPT,
 		/* 82 */ YY_NOT_ACCEPT,
 		/* 83 */ YY_NOT_ACCEPT,
-		/* 84 */ YY_NO_ANCHOR,
-		/* 85 */ YY_NO_ANCHOR,
+		/* 84 */ YY_NOT_ACCEPT,
+		/* 85 */ YY_NOT_ACCEPT,
 		/* 86 */ YY_NOT_ACCEPT,
-		/* 87 */ YY_NO_ANCHOR,
+		/* 87 */ YY_NOT_ACCEPT,
 		/* 88 */ YY_NOT_ACCEPT,
 		/* 89 */ YY_NOT_ACCEPT,
 		/* 90 */ YY_NOT_ACCEPT,
@@ -313,31 +313,102 @@ class Yylex {
 		/* 102 */ YY_NOT_ACCEPT,
 		/* 103 */ YY_NOT_ACCEPT,
 		/* 104 */ YY_NOT_ACCEPT,
-		/* 105 */ YY_NOT_ACCEPT
+		/* 105 */ YY_NOT_ACCEPT,
+		/* 106 */ YY_NOT_ACCEPT,
+		/* 107 */ YY_NOT_ACCEPT,
+		/* 108 */ YY_NOT_ACCEPT,
+		/* 109 */ YY_NOT_ACCEPT,
+		/* 110 */ YY_NOT_ACCEPT,
+		/* 111 */ YY_NOT_ACCEPT,
+		/* 112 */ YY_NOT_ACCEPT,
+		/* 113 */ YY_NOT_ACCEPT,
+		/* 114 */ YY_NOT_ACCEPT,
+		/* 115 */ YY_NOT_ACCEPT,
+		/* 116 */ YY_NOT_ACCEPT,
+		/* 117 */ YY_NOT_ACCEPT,
+		/* 118 */ YY_NOT_ACCEPT,
+		/* 119 */ YY_NOT_ACCEPT,
+		/* 120 */ YY_NOT_ACCEPT,
+		/* 121 */ YY_NOT_ACCEPT,
+		/* 122 */ YY_NOT_ACCEPT,
+		/* 123 */ YY_NOT_ACCEPT,
+		/* 124 */ YY_NOT_ACCEPT,
+		/* 125 */ YY_NOT_ACCEPT,
+		/* 126 */ YY_NOT_ACCEPT,
+		/* 127 */ YY_NOT_ACCEPT,
+		/* 128 */ YY_NOT_ACCEPT,
+		/* 129 */ YY_NOT_ACCEPT,
+		/* 130 */ YY_NOT_ACCEPT,
+		/* 131 */ YY_NOT_ACCEPT,
+		/* 132 */ YY_NOT_ACCEPT,
+		/* 133 */ YY_NOT_ACCEPT,
+		/* 134 */ YY_NOT_ACCEPT,
+		/* 135 */ YY_NOT_ACCEPT,
+		/* 136 */ YY_NO_ANCHOR,
+		/* 137 */ YY_NOT_ACCEPT,
+		/* 138 */ YY_NO_ANCHOR,
+		/* 139 */ YY_NO_ANCHOR,
+		/* 140 */ YY_NOT_ACCEPT,
+		/* 141 */ YY_NOT_ACCEPT,
+		/* 142 */ YY_NOT_ACCEPT,
+		/* 143 */ YY_NOT_ACCEPT,
+		/* 144 */ YY_NOT_ACCEPT,
+		/* 145 */ YY_NOT_ACCEPT,
+		/* 146 */ YY_NOT_ACCEPT,
+		/* 147 */ YY_NOT_ACCEPT,
+		/* 148 */ YY_NOT_ACCEPT,
+		/* 149 */ YY_NOT_ACCEPT,
+		/* 150 */ YY_NOT_ACCEPT,
+		/* 151 */ YY_NOT_ACCEPT,
+		/* 152 */ YY_NOT_ACCEPT,
+		/* 153 */ YY_NOT_ACCEPT,
+		/* 154 */ YY_NOT_ACCEPT,
+		/* 155 */ YY_NOT_ACCEPT,
+		/* 156 */ YY_NOT_ACCEPT,
+		/* 157 */ YY_NOT_ACCEPT,
+		/* 158 */ YY_NOT_ACCEPT,
+		/* 159 */ YY_NOT_ACCEPT,
+		/* 160 */ YY_NOT_ACCEPT,
+		/* 161 */ YY_NOT_ACCEPT,
+		/* 162 */ YY_NOT_ACCEPT,
+		/* 163 */ YY_NOT_ACCEPT,
+		/* 164 */ YY_NOT_ACCEPT,
+		/* 165 */ YY_NOT_ACCEPT,
+		/* 166 */ YY_NOT_ACCEPT
 	};
 	private int yy_cmap[] = unpackFromString(1,130,
-"24:8,23:3,24:2,0,24:18,23,24:64,5,1,9,11,4,15,20,22,16,24,8,3,17,6,2,18,24," +
-"7,10,14,12,21,19,13,24:7,25:2")[0];
+"45:8,46:2,47,45:2,0,45:18,46,32,44,45:2,28,33,45,38,39,26,24,36,25,37,27,45" +
+":11,35,29,30,31,45:28,40,45,41,45:3,5,1,9,11,4,15,21,23,16,45,8,3,17,6,2,18" +
+",45,7,10,14,12,22,19,13,20,45,42,34,43,45:2,48:2")[0];
 
-	private int yy_rmap[] = unpackFromString(1,106,
-"0,1,2,3:3,4,3:17,5,3,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,2" +
-"5,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,5" +
-"0,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,7" +
-"5,76,77,78,79,80,81,82,83,84,85")[0];
+	private int yy_rmap[] = unpackFromString(1,167,
+"0,1,2:5,3,2,4,5,2:9,6,2:8,7,2,8,2:10,9,10,2:9,11,2,12,13,14,15,16,17,18,19," +
+"20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,7:2,37,38,39,40,41,42,43" +
+",44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68" +
+",69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93" +
+",94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113," +
+"114,115,116,117,118,119,120,121")[0];
 
-	private int yy_nxt[][] = unpackFromString(86,26,
-"-1,1,25:2,27,25,29,84,25,31,33,35,25:2,37,39,41,25,87,43,25,85,25,2,25,3,-1" +
-":2,24,-1:4,26,-1:41,2,-1:32,102,-1:23,89,-1:27,86,-1:24,28,-1:9,30,-1:22,48" +
-",-1:19,32,-1:35,49,-1:14,36,-1:41,97,-1:20,38,-1:16,50,-1:8,98,-1:13,40,-1:" +
-"28,51,-1:27,88,-1:25,105,-1:20,42,-1:2,44,-1:32,52,-1:19,45,-1:8,4,-1,46,-1" +
-":15,5,-1:40,90,-1:6,92,-1:36,6,-1:29,54,-1:23,55,-1:13,7,-1:25,94,-1:32,100" +
-",-1:24,59,-1:16,103,-1:28,8,-1:24,61,-1:28,62,-1:30,9,-1:22,10,-1:24,104,-1" +
-":28,11,-1:19,12,-1:25,71,-1:35,72,-1:15,13,-1:26,73,-1:31,74,-1:20,14,-1:25" +
-",15,-1:39,16,-1:9,17,-1:36,96,-1:27,76,-1:11,77,-1:28,18,-1:29,19,-1:20,78," +
-"-1:24,80,-1:27,20,-1:38,21,-1:15,81,-1:22,82,-1:23,22,-1:35,83,-1:21,23,-1:" +
-"19,34,-1:23,99,-1:28,57,-1:27,47,-1:30,53,-1:16,91,-1:38,93,-1:13,64,-1:31," +
-"60,-1:18,63,-1:28,65,-1:26,67,-1:23,79,-1:25,58,-1:32,95,-1:29,56,-1:12,66," +
-"-1:28,68,-1:26,70,-1:21,69,-1:29,75,-1:34,101,-1:9");
+	private int yy_nxt[][] = unpackFromString(122,49,
+"-1,1,54:2,56,58,60,136,54,62,64,66,54:2,68,70,72,54,139,74,54:2,138,54,2,3," +
+"4,5,6,7,8,9,10,76,78,11,12,13,14,15,16,17,18,19,80,54,20:2,21,-1:2,53,-1:4," +
+"55,-1:120,24,-1:48,25,-1:48,26,-1:64,20:2,-1:2,81:43,29,81:2,-1:6,159,-1:4," +
+"96,-1:48,119,-1:48,150,-1:41,141,-1:50,137,-1:47,57,-1:9,59,-1:45,82,-1:48," +
+"135,-1:52,83,-1:38,61,-1:63,154,-1:32,65,-1:50,84,-1:8,155,-1:48,67,-1:39,8" +
+"5,-1:45,69,-1:53,163,-1:48,140,-1:53,86,-1:38,71,-1:2,73,-1:50,30,-1:47,75," +
+"-1:4,22,-1:3,23,-1,77,-1:34,144,-1:68,142,-1:39,31,-1:67,27,-1:33,88,-1:64," +
+"28,-1:30,89,-1:36,32,-1:48,146,-1:55,157,-1:47,94,-1:39,161,-1:51,33,-1:47," +
+"97,-1:51,98,-1:53,34,-1:45,35,-1:61,102,-1:34,162,-1:51,36,-1:42,37,-1:46,1" +
+"48,-1:50,108,-1:58,109,-1:38,38,-1:49,110,-1:54,111,-1:43,112,-1:48,39,-1:4" +
+"8,40,-1:63,41,-1:31,42,-1:59,149,-1:50,115,-1:34,116,-1:51,43,-1:52,44,-1:4" +
+"0,117,-1:51,118,-1:53,121,-1:42,122,-1:50,45,-1:60,46,-1:50,47,-1:30,151,-1" +
+":55,123,-1:53,124,-1:40,125,-1:46,48,-1:49,152,-1:57,128,-1:40,166,-1:52,12" +
+"9,-1:48,49,-1:52,131,-1:48,50,-1:39,132,-1:49,133,-1:56,51,-1:48,52,-1:44,1" +
+"60,-1:42,63,-1:49,91,-1:45,156,-1:53,79,-1:53,87,-1:39,143,-1:61,145,-1:36," +
+"100,-1:54,95,-1:41,99,-1:51,101,-1:49,104,-1:47,114,-1:47,120,-1:45,126,-1:" +
+"52,127,-1:48,130,-1:48,134,-1:47,93,-1:55,147,-1:52,90,-1:35,103,-1:51,105," +
+"-1:49,107,-1:57,92,-1:35,106,-1:52,113,-1:57,158,-1:37,153,-1:57,164,-1:44," +
+"165,-1:38");
 
 	public Yytoken yylex ()
 		throws java.io.IOException {
@@ -390,170 +461,310 @@ class Yylex {
 					case -2:
 						break;
 					case 2:
-						{}
+						{ return new Yytoken( 20, yytext() ); }
 					case -3:
 						break;
 					case 3:
-						
+						{ return new Yytoken( 21, yytext() ); }
 					case -4:
 						break;
 					case 4:
-						{ return new Yytoken( 8, yytext() ); }
+						{ return new Yytoken( 22, yytext() ); }
 					case -5:
 						break;
 					case 5:
-						{ return new Yytoken( 7, yytext() ); }
+						{ return new Yytoken( 23, yytext() ); }
 					case -6:
 						break;
 					case 6:
-						{ return new Yytoken( 10, yytext() ); }
+						{ return new Yytoken( 24, yytext() ); }
 					case -7:
 						break;
 					case 7:
-						{ return new Yytoken( 4, yytext() ); }
+						{ return new Yytoken( 25, yytext() ); }
 					case -8:
 						break;
 					case 8:
-						{ return new Yytoken( 17, yytext() ); }
+						{ return new Yytoken( 29, yytext() ); }
 					case -9:
 						break;
 					case 9:
-						{ return new Yytoken( 18, yytext() ); }
+						{ return new Yytoken( 27, yytext() ); }
 					case -10:
 						break;
 					case 10:
-						{ return new Yytoken( 1, yytext() ); }
+						{ return new Yytoken( 33, yytext() ); }
 					case -11:
 						break;
 					case 11:
-						{ return new Yytoken( 2, yytext() ); }
+						{ return new Yytoken( 35, yytext() ); }
 					case -12:
 						break;
 					case 12:
-						{ return new Yytoken( 6, yytext() ); }
+						{ return new Yytoken( 36, yytext() ); }
 					case -13:
 						break;
 					case 13:
-						{ return new Yytoken( 19, yytext() ); }
+						{ return new Yytoken( 37, yytext() ); }
 					case -14:
 						break;
 					case 14:
-						{ return new Yytoken( 14, yytext() ); }
+						{ return new Yytoken( 38, yytext() ); }
 					case -15:
 						break;
 					case 15:
-						{ return new Yytoken( 15, yytext() ); }
+						{ return new Yytoken( 39, yytext() ); }
 					case -16:
 						break;
 					case 16:
-						{ return new Yytoken( 16, yytext() ); }
+						{ return new Yytoken( 40, yytext() ); }
 					case -17:
 						break;
 					case 17:
-						{ return new Yytoken( 3, yytext() ); }
+						{ return new Yytoken( 41, yytext() ); }
 					case -18:
 						break;
 					case 18:
-						{ return new Yytoken( 0, yytext() ); }
+						{ return new Yytoken( 42, yytext() ); }
 					case -19:
 						break;
 					case 19:
-						{ return new Yytoken( 5, yytext() ); }
+						{ return new Yytoken( 43, yytext() ); }
 					case -20:
 						break;
 					case 20:
-						{ return new Yytoken( 13, yytext() ); }
+						{}
 					case -21:
 						break;
 					case 21:
-						{ return new Yytoken( 12, yytext() ); }
+						
 					case -22:
 						break;
 					case 22:
-						{ return new Yytoken( 11, yytext() ); }
+						{ return new Yytoken( 48, yytext() ); }
 					case -23:
 						break;
 					case 23:
-						{ return new Yytoken( 9, yytext() ); }
+						{ return new Yytoken( 8, yytext() ); }
 					case -24:
 						break;
-					case 25:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 24:
+						{ return new Yytoken( 26, yytext() ); }
 					case -25:
 						break;
-					case 27:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 25:
+						{ return new Yytoken( 28, yytext() ); }
 					case -26:
 						break;
-					case 29:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 26:
+						{ return new Yytoken( 30, yytext() ); }
 					case -27:
 						break;
-					case 31:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 27:
+						{ return new Yytoken( 31, yytext() ); }
 					case -28:
 						break;
-					case 33:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 28:
+						{ return new Yytoken( 32, yytext() ); }
 					case -29:
 						break;
-					case 35:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 29:
+						{ return new Yytoken( 46, "stringconstant" ); }
 					case -30:
 						break;
-					case 37:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 30:
+						{ return new Yytoken( 7, yytext() ); }
 					case -31:
 						break;
-					case 39:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 31:
+						{ return new Yytoken( 10, yytext() ); }
 					case -32:
 						break;
-					case 41:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 32:
+						{ return new Yytoken( 4, yytext() ); }
 					case -33:
 						break;
-					case 43:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 33:
+						{ return new Yytoken( 17, yytext() ); }
 					case -34:
 						break;
-					case 84:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 34:
+						{ return new Yytoken( 18, yytext() ); }
 					case -35:
 						break;
-					case 85:
-						{
-	System.out.println( "Token not implemented yet: " + yytext() );
-}
+					case 35:
+						{ return new Yytoken( 1, yytext() ); }
 					case -36:
 						break;
-					case 87:
+					case 36:
+						{ return new Yytoken( 2, yytext() ); }
+					case -37:
+						break;
+					case 37:
+						{ return new Yytoken( 6, yytext() ); }
+					case -38:
+						break;
+					case 38:
+						{ return new Yytoken( 19, yytext() ); }
+					case -39:
+						break;
+					case 39:
+						{ return new Yytoken( 14, yytext() ); }
+					case -40:
+						break;
+					case 40:
+						{ return new Yytoken( 15, yytext() ); }
+					case -41:
+						break;
+					case 41:
+						{ return new Yytoken( 16, yytext() ); }
+					case -42:
+						break;
+					case 42:
+						{ return new Yytoken( 3, yytext() ); }
+					case -43:
+						break;
+					case 43:
+						{ return new Yytoken( 0, yytext() ); }
+					case -44:
+						break;
+					case 44:
+						{ return new Yytoken( 5, yytext() ); }
+					case -45:
+						break;
+					case 45:
+						{ return new Yytoken( 13, yytext() ); }
+					case -46:
+						break;
+					case 46:
+						{ return new Yytoken( 34, yytext() ); }
+					case -47:
+						break;
+					case 47:
+						{ return new Yytoken( 12, yytext() ); }
+					case -48:
+						break;
+					case 48:
+						{ return new Yytoken( 11, yytext() ); }
+					case -49:
+						break;
+					case 49:
+						{ return new Yytoken( 9, yytext() ); }
+					case -50:
+						break;
+					case 50:
+						{ return new Yytoken( 44, yytext() ); }
+					case -51:
+						break;
+					case 51:
+						{ return new Yytoken( 45, yytext() ); }
+					case -52:
+						break;
+					case 52:
+						{ return new Yytoken( 47, yytext() ); }
+					case -53:
+						break;
+					case 54:
 						{
 	System.out.println( "Token not implemented yet: " + yytext() );
 }
-					case -37:
+					case -54:
+						break;
+					case 56:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -55:
+						break;
+					case 58:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -56:
+						break;
+					case 60:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -57:
+						break;
+					case 62:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -58:
+						break;
+					case 64:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -59:
+						break;
+					case 66:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -60:
+						break;
+					case 68:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -61:
+						break;
+					case 70:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -62:
+						break;
+					case 72:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -63:
+						break;
+					case 74:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -64:
+						break;
+					case 76:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -65:
+						break;
+					case 78:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -66:
+						break;
+					case 80:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -67:
+						break;
+					case 136:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -68:
+						break;
+					case 138:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -69:
+						break;
+					case 139:
+						{
+	System.out.println( "Token not implemented yet: " + yytext() );
+}
+					case -70:
 						break;
 					default:
 						yy_error(YY_E_INTERNAL,false);
