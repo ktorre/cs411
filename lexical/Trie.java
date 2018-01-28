@@ -30,22 +30,18 @@ public class Trie {
 
 	//*************** GETTERS/SETTERS ***************
 	private int getNext( int location ) {
-		//return nextArray.get( location );
 		return nextArray[ location ];
 	}
 
 	private void setNext( int location, int value ) {
-		//nextArray.set( location, value );
 		nextArray[ location ] = value;
 	}
 
 	private char getSymbol( int location ) {
-		//return symbolArray.get( location );
 		return symbolArray[ location ];
 	}
 
 	private void setSymbol( int location, char value ) {
-		//symbolArray.set( location, value );
 		symbolArray[ location ] = value;
 	}
 
