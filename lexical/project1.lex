@@ -78,6 +78,7 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> "booleanconstant" { return new Yytoken( 45, "booleanconstant" ); }
 <YYINITIAL> "id" { return new Yytoken( 46, yytext() ); }
 <YYINITIAL> {ALPHA}({ALPHA}|{DIGIT})* { return new Yytoken( 47, "id" ); }
+<YYINITIAL> {DIGIT}{DIGIT}*"."{DIGIT}*(("E"|"e")("+"|"-")?{DIGIT})?{DIGIT}* { return new Yytoken( 50, "doubleconstant" ); }
 
 <YYINITIAL> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
 <YYINITIAL> \n {}
