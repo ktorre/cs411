@@ -103,16 +103,13 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> "true"|"false" { return new Yytoken( 45, "booleanconstant" ); }
 <YYINITIAL> {ALPHA}({ALPHA}|{DIGIT}|"_")* { return new Yytoken( 46, "id" ); }
 
-<YYINITIAL> ";"\n { System.out.println("semicolon"); }
-<YYINITIAL> "{"\n { System.out.println("leftbrace"); }
-<YYINITIAL> "}"\n { System.out.println("rightbrace"); }
-
 <YYINITIAL> "//".* {}
 <YYINITIAL> "/*" { yybegin( COMMENT ); }
 <COMMENT> "*/" { yybegin( YYINITIAL ); }
 <COMMENT> {COMMENT_TEXT} {}
 
 <YYINITIAL, COMMENT> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
+<YYINITIAL> () { System.out.println("\n"); }
 <COMMENT> \n {}
 
 <YYINITIAL> . {
