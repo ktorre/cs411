@@ -81,6 +81,7 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> ({DIGIT}{DIGIT}*)|(("0x"|"0X")({DIGIT}|[a-f]|[A-F])({DIGIT}|[a-f]|[A-F])*) { return new Yytoken(51, "intconstant" ); }
 
 <YYINITIAL> "//".* {}
+<YYINITIAL> "/*"{COMMENT_TEXT}"*/" {}
 <YYINITIAL> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
 <YYINITIAL> \n {}
 
