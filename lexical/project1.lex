@@ -1,9 +1,26 @@
+import java.io.FileReader;
+import java.io.File;
+
 class project1 {
 	public static void main( String argv[] ) throws java.io.IOException {
-		Yylex yy = new Yylex( System.in );
-		Yytoken t;
-		while ( ( t = yy.yylex() ) != null )
-			System.out.println( t );
+		if ( argv.length > 0 ) {
+		    for ( int i = 0; i < argv.length; i++ ) {
+			    File file = new File( argv[ 0 ] );
+			    FileReader fr = new FileReader( file );
+			    Yylex yy = new Yylex( fr );
+			    Yytoken t;
+
+			    while ( ( t = yy.yylex() ) != null )  {
+				System.out.println( t );
+			    }
+		    }
+		} else {
+			System.out.println( "INTERPRETER MODE" );
+			Yylex yy = new Yylex( System.in );
+			Yytoken t;
+			while ( ( t = yy.yylex() ) != null )
+				System.out.println( t );
+			}
 		}
 }
 
@@ -21,6 +38,7 @@ class Yytoken {
 }
 
 %%
+%state COMMENT
 ALPHA=[A-Za-z]
 DIGIT=[0-9]
 NONNEWLINE_WHITE_SPACE_CHAR=[\ \t\b\012]
@@ -81,9 +99,12 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> ({DIGIT}{DIGIT}*)|(("0x"|"0X")({DIGIT}|[a-f]|[A-F])({DIGIT}|[a-f]|[A-F])*) { return new Yytoken(51, "intconstant" ); }
 
 <YYINITIAL> "//".* {}
-<YYINITIAL> "/*"{COMMENT_TEXT}"*/" {}
-<YYINITIAL> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
-<YYINITIAL> \n {}
+<YYINITIAL> "/*" { yybegin( COMMENT ); System.out.println( "Entering comment" ); }
+<COMMENT> "*/" { yybegin( YYINITIAL ); System.out.println( "Exiting comment" ); }
+<COMMENT> {COMMENT_TEXT} { System.out.println( "In comment" ); }
+
+<YYINITIAL, COMMENT> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
+<YYINITIAL, COMMENT> \n {}
 
 <YYINITIAL> . {
 	System.out.println( "Token not implemented yet: " + yytext() );
