@@ -54,20 +54,24 @@ public class Trie {
 
 	public int inputWord( char[] word ) {
 		// Making it return an int so we can use it for error handling/reporting
-		int head = ( (int)word[ 0 ] - 65 );
-		//Check for the 6 characters between 'Z' and 'a'
-		if ( head > 25 && head < 32 )
-			return -1; // If not in alphabet, throw error
-		//Account for the 6 characters between 'Z' and 'a'
-		if( head > 31 )
-			head -= 6;
-		if ( head < 0 || head > 51 )  { 
-			return -1; // If not in alphabet, throw error
-		} else {
-			int symbolStartLocation = getSymbolLocation( head ); 
-			fillSymbolArray( symbolStartLocation, word );
-			return 0; // success
+		if(!containsWord( word )){
+			int head = ( (int)word[ 0 ] - 65 );
+			//Check for the 6 characters between 'Z' and 'a'
+			if ( head > 25 && head < 32 )
+				return -1; // If not in alphabet, throw error
+			//Account for the 6 characters between 'Z' and 'a'
+			if( head > 31 )
+				head -= 6;
+			if ( head < 0 || head > 51 )  { 
+				return -1; // If not in alphabet, throw error
+			} else {
+				int symbolStartLocation = getSymbolLocation( head ); 
+				fillSymbolArray( symbolStartLocation, word );
+				return 0; // success
+			}
 		}
+		else
+			return 1;
 	}
 	
 	public boolean containsWord( String word ) {
@@ -230,10 +234,8 @@ public class Trie {
 	//*********TESTMAIN*************
 	public static void main( String[] args ) {
 		Trie test = new Trie();
-		if( !test.containsWord( "break" ) )
-			test.inputWord( "break" );
-		if( !test.containsWord( "break" ) )
-			test.inputWord( "break" );
+		test.inputWord( "break" );
+		test.inputWord( "break" );
 		test.inputWord( "boolean" );
 		test.inputWord( "double" );
 		test.inputWord( "bit" );
@@ -241,11 +243,9 @@ public class Trie {
 		test.inputWord( "bot" );
 		test.inputWord( "bre" );
 		test.inputWord( "hippopotamus" );
-		if( !test.containsWord( "hippo" ) )
-			test.inputWord( "hippo" );
+		test.inputWord( "hippo" );
 		test.inputWord( "hiptoss" );
-		if( !test.containsWord( "zebra" ))
-			test.inputWord( "zebra" );
+		test.inputWord( "zebra" );
 		System.out.println( test );
 	}
 }
