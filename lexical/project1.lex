@@ -57,7 +57,8 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> "<=" { return new Yytoken( 24, "lessequal" ); }
 <YYINITIAL> ">" { return new Yytoken( 25, "greater" ); }
 <YYINITIAL> ">=" { return new Yytoken( 26, "greaterequal" ); }
-<YYINITIAL> "=" { return new Yytoken( 27, "equal" ); }
+<YYINITIAL> "=" { return new Yytoken( 200, "assignop" ); }
+<YYINITIAL> "==" { return new Yytoken( 27, "equal" ); }
 <YYINITIAL> "!=" { return new Yytoken( 28, "notequal" ); }
 <YYINITIAL> "&&" { return new Yytoken( 29, "and" ); }
 <YYINITIAL> "||" { return new Yytoken( 30, "or" ); }
@@ -77,6 +78,7 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> \".*\" { return new Yytoken( 44, "stringconstant" ); }
 <YYINITIAL> "true"|"false" { return new Yytoken( 45, "booleanconstant" ); }
 <YYINITIAL> {ALPHA}({ALPHA}|{DIGIT})* { return new Yytoken( 46, "id" ); }
+<YYINITIAL> ({DIGIT}{DIGIT}*)|(("0x"|"0X")({DIGIT}|[a-f]|[A-F])({DIGIT}|[a-f]|[A-F])*) { return new Yytoken(51, "intconstant" ); }
 
 <YYINITIAL> "//".* {}
 <YYINITIAL> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
