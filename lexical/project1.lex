@@ -72,13 +72,11 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> "]" { return new Yytoken( 39, "rightbracket" ); }
 <YYINITIAL> "{" { return new Yytoken( 40, "leftbrace" ); }
 <YYINITIAL> "}" { return new Yytoken( 41, "rightbrace" ); }
-<YYINITIAL> "intconstant" { return new Yytoken( 42, "intconstant" ); }
-<YYINITIAL> "doubleconstant" { return new Yytoken( 43, "doubleconstant" ); }
+<YYINITIAL> {DIGIT}{DIGIT}* { return new Yytoken( 42, "intconstant" ); }
+<YYINITIAL> {DIGIT}{DIGIT}*"."{DIGIT}*(("E"|"e")("+"|"-")?{DIGIT})?{DIGIT}* { return new Yytoken( 43, "doubleconstant" ); }
 <YYINITIAL> \".*\" { return new Yytoken( 44, "stringconstant" ); }
-<YYINITIAL> "booleanconstant" { return new Yytoken( 45, "booleanconstant" ); }
-<YYINITIAL> "id" { return new Yytoken( 46, yytext() ); }
-<YYINITIAL> {ALPHA}({ALPHA}|{DIGIT})* { return new Yytoken( 47, "id" ); }
-<YYINITIAL> {DIGIT}{DIGIT}*"."{DIGIT}*(("E"|"e")("+"|"-")?{DIGIT})?{DIGIT}* { return new Yytoken( 50, "doubleconstant" ); }
+<YYINITIAL> "true"|"false" { return new Yytoken( 45, "booleanconstant" ); }
+<YYINITIAL> {ALPHA}({ALPHA}|{DIGIT})* { return new Yytoken( 46, "id" ); }
 
 <YYINITIAL> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
 <YYINITIAL> \n {}
