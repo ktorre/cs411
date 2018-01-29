@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Trie {
 
-	public static final int DEFAULT_SIZE = 100; // Default allocation size for symbol/next array
+	public static final int DEFAULT_SIZE = 1000; // Default allocation size for symbol/next array
 	public static final char DELIMITER = '@';
 
 	private int[] switchArray;

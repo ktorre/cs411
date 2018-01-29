@@ -3,6 +3,7 @@ import java.io.File;
 
 class project1 {
 	public static void main( String argv[] ) throws java.io.IOException {
+		Trie table = new Trie();
 		if ( argv.length > 0 ) {
 		    for ( int i = 0; i < argv.length; i++ ) {
 			    File file = new File( argv[ 0 ] );
@@ -11,6 +12,8 @@ class project1 {
 			    Yytoken t;
 
 			    while ( ( t = yy.yylex() ) != null )  {
+				if ( ( t.t_id >= 0 && t.t_id <= 17 ) || t.t_id == 46 )
+					table.inputWord( t.toString() );
 				System.out.print( t + " " );
 			    }
 		    }
@@ -19,8 +22,11 @@ class project1 {
 			Yylex yy = new Yylex( System.in );
 			Yytoken t;
 			while ( ( t = yy.yylex() ) != null )
+				if ( ( t.t_id >= 0 && t.t_id <= 17 ) || t.t_id == 46 )
+					table.inputWord( t.toString() );
 				System.out.println( t );
 			}
+		System.out.println( "\n" + table );
 		}
 }
 
@@ -30,7 +36,7 @@ class Yytoken {
 		t_text = text;
 	}
 	
-	private int t_id; // Token ID
+	public int t_id; // Token ID
 	private String t_text; // Matching token string
 	public String toString() {
 		//return "Token #" + t_id + ": " + t_text;
