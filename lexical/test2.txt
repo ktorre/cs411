@@ -1,0 +1,77 @@
+/* This is the second test file written in Toy
+	 This is an example of a multiline comment
+*/
+
+double division( double num1, double num2 ) {
+	return num1 / num2;
+}
+
+//Here is the main method and an example of a single line comment
+void main() {
+	string password = "password";
+	println( "Hello there! What is the password?" );
+	string userResponse;
+	userResponse = readln();
+	if( userResponse == password ) {
+		boolean BOOLEAN;
+		BOOLEAN = false;
+		int number = 0;
+		
+		while( !BOOLEAN ) {
+			number = number + 1;
+			if ( number < 10) {
+				number = number * 02;
+			}
+			else {
+				number = number % 10
+			}
+			if( number > 15 ) {
+				BOOLEAN = true;
+			}
+		}
+		
+		for( ; number <= 25; number = number - 1 ) {
+			if( number >= 10 && number != 18 ) {
+				break;
+			}
+		}
+		
+		int hex_int;
+		hex_int = 0x77F;
+		double double1;
+		double1 = 0.19;
+		double double2;
+		double2 = 19e19;
+		double double3;
+		double3 = 19.;
+		double double4;
+		double4 = 19e-019;
+		
+		if( double2 == 19E+19 || hex_int == 0X1aB2 ) {
+			println( "Here is double2 divided by double2: ", division( double2, double1 ) );
+		}
+	}
+	else {
+		println( "That is incorrect!" );
+		println( "Here is a bunch of random characters:" );
+		println( "~!@#$%^&*()_+`1234567890-=qwertyuiop[]\{}|asdfghjkl;':zxcvbnm,./<>?" );
+	}
+}
+
+class arrayClass() {
+	int [] arr;
+	arr = newarray( 5, int );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
