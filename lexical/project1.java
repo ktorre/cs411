@@ -9,7 +9,7 @@ class project1 {
 			    Yylex yy = new Yylex( fr );
 			    Yytoken t;
 			    while ( ( t = yy.yylex() ) != null )  {
-				System.out.println( t );
+				System.out.print( t + " " );
 			    }
 		    }
 		} else {
@@ -29,7 +29,8 @@ class Yytoken {
 	private int t_id; // Token ID
 	private String t_text; // Matching token string
 	public String toString() {
-		return "Token #" + t_id + ": " + t_text;
+		//return "Token #" + t_id + ": " + t_text;
+		return t_text;
 	}
 }
 

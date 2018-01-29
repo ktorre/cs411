@@ -11,7 +11,7 @@ class project1 {
 			    Yytoken t;
 
 			    while ( ( t = yy.yylex() ) != null )  {
-				System.out.println( t );
+				System.out.print( t + " " );
 			    }
 		    }
 		} else {
@@ -33,7 +33,8 @@ class Yytoken {
 	private int t_id; // Token ID
 	private String t_text; // Matching token string
 	public String toString() {
-		return "Token #" + t_id + ": " + t_text;
+		//return "Token #" + t_id + ": " + t_text;
+		return t_text;
 	}
 }
 
@@ -102,7 +103,8 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <COMMENT> {COMMENT_TEXT} { System.out.println( "In comment" ); }
 
 <YYINITIAL, COMMENT> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
-<YYINITIAL, COMMENT> \n {}
+<YYINITIAL> \n { System.out.println("\n"); }
+<COMMENT> \n {}
 
 <YYINITIAL> . {
 	System.out.println( "Token not implemented yet: " + yytext() );
