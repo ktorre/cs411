@@ -94,8 +94,7 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> {DIGIT}{DIGIT}*"."{DIGIT}*(("E"|"e")("+"|"-")?{DIGIT})?{DIGIT}* { return new Yytoken( 43, "doubleconstant" ); }
 <YYINITIAL> \".*\" { return new Yytoken( 44, "stringconstant" ); }
 <YYINITIAL> "true"|"false" { return new Yytoken( 45, "booleanconstant" ); }
-<YYINITIAL> {ALPHA}({ALPHA}|{DIGIT}|"_")* { return new Yytoken( 46, "id" 
-); }
+<YYINITIAL> {ALPHA}({ALPHA}|{DIGIT}|"_")* { return new Yytoken( 46, "id" ); }
 
 <YYINITIAL> "//".* {}
 <YYINITIAL> "/*" { yybegin( COMMENT ); System.out.println( "Entering comment" ); }

@@ -512,8 +512,7 @@ class Yylex {
 					case -2:
 						break;
 					case 2:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -3:
 						break;
 					case 3:
@@ -727,8 +726,7 @@ class Yylex {
 					case -55:
 						break;
 					case 56:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -56:
 						break;
 					case 57:
@@ -750,8 +748,7 @@ class Yylex {
 					case -60:
 						break;
 					case 62:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -61:
 						break;
 					case 63:
@@ -769,8 +766,7 @@ class Yylex {
 					case -64:
 						break;
 					case 67:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -65:
 						break;
 					case 68:
@@ -784,8 +780,7 @@ class Yylex {
 					case -67:
 						break;
 					case 71:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -68:
 						break;
 					case 72:
@@ -793,393 +788,315 @@ class Yylex {
 					case -69:
 						break;
 					case 74:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -70:
 						break;
 					case 76:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -71:
 						break;
 					case 78:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -72:
 						break;
 					case 79:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -73:
 						break;
 					case 80:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -74:
 						break;
 					case 81:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -75:
 						break;
 					case 82:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -76:
 						break;
 					case 83:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -77:
 						break;
 					case 84:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -78:
 						break;
 					case 85:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -79:
 						break;
 					case 86:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -80:
 						break;
 					case 87:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -81:
 						break;
 					case 88:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -82:
 						break;
 					case 89:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -83:
 						break;
 					case 90:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -84:
 						break;
 					case 91:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -85:
 						break;
 					case 92:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -86:
 						break;
 					case 93:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -87:
 						break;
 					case 94:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -88:
 						break;
 					case 95:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -89:
 						break;
 					case 96:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -90:
 						break;
 					case 97:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -91:
 						break;
 					case 98:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -92:
 						break;
 					case 99:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -93:
 						break;
 					case 100:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -94:
 						break;
 					case 101:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -95:
 						break;
 					case 102:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -96:
 						break;
 					case 103:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -97:
 						break;
 					case 104:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -98:
 						break;
 					case 105:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -99:
 						break;
 					case 106:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -100:
 						break;
 					case 107:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -101:
 						break;
 					case 108:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -102:
 						break;
 					case 109:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -103:
 						break;
 					case 110:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -104:
 						break;
 					case 111:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -105:
 						break;
 					case 112:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -106:
 						break;
 					case 113:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -107:
 						break;
 					case 114:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -108:
 						break;
 					case 115:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -109:
 						break;
 					case 116:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -110:
 						break;
 					case 117:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -111:
 						break;
 					case 118:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -112:
 						break;
 					case 119:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -113:
 						break;
 					case 120:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -114:
 						break;
 					case 121:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -115:
 						break;
 					case 122:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -116:
 						break;
 					case 123:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -117:
 						break;
 					case 124:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -118:
 						break;
 					case 125:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -119:
 						break;
 					case 126:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -120:
 						break;
 					case 127:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -121:
 						break;
 					case 128:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -122:
 						break;
 					case 129:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -123:
 						break;
 					case 130:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -124:
 						break;
 					case 131:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -125:
 						break;
 					case 132:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -126:
 						break;
 					case 133:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -127:
 						break;
 					case 134:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -128:
 						break;
 					case 135:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -129:
 						break;
 					case 136:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -130:
 						break;
 					case 137:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -131:
 						break;
 					case 138:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -132:
 						break;
 					case 139:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -133:
 						break;
 					case 140:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -134:
 						break;
 					case 141:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -135:
 						break;
 					case 142:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -136:
 						break;
 					case 143:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -137:
 						break;
 					case 144:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -138:
 						break;
 					case 145:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -139:
 						break;
 					case 146:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -140:
 						break;
 					case 147:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -141:
 						break;
 					case 148:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -142:
 						break;
 					case 149:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -143:
 						break;
 					case 150:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -144:
 						break;
 					case 151:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -145:
 						break;
 					case 152:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -146:
 						break;
 					case 153:
-						{ return new Yytoken( 46, "id" 
-); }
+						{ return new Yytoken( 46, "id" ); }
 					case -147:
 						break;
 					default:

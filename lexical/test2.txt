@@ -1,4 +1,5 @@
-/* This is the second test file written in Toy
+/*
+	 This is the second test file written in Toy
 	 This is an example of a multiline comment
 */
 
@@ -41,13 +42,13 @@ void main() {
 		double double1;
 		double1 = 0.19;
 		double double2;
-		double2 = 19e19;
+		double2 = 19.0e19;
 		double double3;
 		double3 = 19.;
 		double double4;
-		double4 = 19e-019;
+		double4 = 19.0e-019;
 		
-		if( double2 == 19E+19 || hex_int == 0X1aB2 ) {
+		if( double2 == 19.E+19 || hex_int == 0X1aB2 ) {
 			println( "Here is double2 divided by double2: ", division( double2, double1 ) );
 		}
 	}
