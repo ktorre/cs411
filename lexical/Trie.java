@@ -4,7 +4,8 @@ public class Trie {
 
 	public static final int DEFAULT_SIZE = 1000; // Default allocation size for symbol/next array
 	public static final char DELIMITER = '@';
-	public static final char OUTPUTWRAPLENGTH = 20;
+	public static final char NEXTEMPTYCHAR = ' ';
+	public static final char WRAPLENGTH = 20;
 
 	private int[] switchArray;
 	private char[] symbolArray;
@@ -200,35 +201,59 @@ public class Trie {
 
 	//*************** OUTPUT ***************
 	public String toString() {
-		String output = String.format("%-10s", " ");
-		for ( int i = 0; i < switchArray.length; i++ ) {
-			if ( i < 26 )
-				output += String.format("%2c ", (char)(i + 65));		//Left-justify the character in a field of size 3
-			else
-				output += String.format("%2c ", (char)(i + 71));		//Left-justify the character in a field of size 3
-		}
-		output += String.format( "\n%-10s", "Switch:" );
-		for ( int i = 0; i < switchArray.length; i++ ) {
-			//if ( switchArray[ i ] != -1 )
-				output += String.format("%2d ", switchArray[ i ]);		//Left-justify the switchArray value in a field of size 3
-		}
-		output += "\n\n";
-		for ( int i = 0; i < nextEmpty; i++ ) {
-			output += String.format("%2d ", i);		//Left-justify the value of i in a field of size 3
-		}
-		output += String.format( "\n%10s", "Symbol:" );
+		// Purpose: Print table
 
-		for ( int i = 0; i < nextEmpty; i++ ) {
-			output += String.format("%2c ", getSymbol( i ));	//Left-justify the Symbol at location i in a field of size 3
+		String output = "\n\n";
+		//***SWITCH ARRAY OUTPUT***
+		//In order to make the switch array wrap with the index loop, had to make them both rely on the same variable ( wrap )
+		for ( int wrap = 0; wrap < ( ( switchArray.length / WRAPLENGTH ) + 1 ); wrap++) {
+			output += String.format("%-10s", " ");
+			for ( int i = ( wrap * WRAPLENGTH ); i < ( ( wrap+1 ) * WRAPLENGTH ) && i < switchArray.length; i++ ) {
+				if ( i < 26 )
+					output += String.format("%2c ", (char)(i + 65));		//Left-justify the character in a field of size 3
+				else
+					output += String.format("%2c ", (char)(i + 71));		//Left-justify the character in a field of size 3
+			}
+			output += String.format( "\n%-10s", "Switch:" );
+			for ( int i = ( wrap * WRAPLENGTH ); i < ( ( wrap+1 ) * WRAPLENGTH ) && i < switchArray.length; i++ ) {
+				//if ( switchArray[ i ] != -1 )
+				output += String.format("%2d ", switchArray[ i ]);		//Left-justify the switchArray value in a field of size 3
+			}
+			output += "\n\n";
 		}
+
+		//***END SWITCH***
 		output += "\n";
-		for ( int i = 0; i < nextEmpty; i++ ) {
-			if ( getNext( i ) == -1 )
-				output += String.format("%2c ", '-');		//Left-justify a dash in a field of size 3
-			else
-				output += String.format("%2d ", getNext( i ));	//Left-justify the next value in a field of size 3
+		//***SYMBOL/NEXT***
+		//Same idea as the switch array, but this one's for the index loop, symbol array, and next array
+		for ( int wrap = 0; wrap < ( ( nextEmpty / WRAPLENGTH ) + 1 ); wrap++) {
+			//***SYMBOL/NEXT INDEX***
+			output += String.format( "%-10s", " " );
+			for ( int i = ( wrap * WRAPLENGTH ); i < ( ( wrap+1 ) * WRAPLENGTH ) && i < nextEmpty; i++ ) {
+				output += String.format("%2d ", i);		//Left-justify the value of i in a field of size 3
+			}
+			//***END INDEX***
+			
+			//***SYMBOL START***
+			output += String.format( "\n%-10s", "Symbol:" );
+
+			for ( int i = ( wrap * WRAPLENGTH ); i < ( ( wrap+1 ) * WRAPLENGTH ) && i < nextEmpty; i++ ) {
+				output += String.format("%2c ", getSymbol( i ));	//Left-justify the Symbol at location i in a field of size 3
+			}
+			//***END SYMBOL***
+			
+			//***NEXT START***
+			output += String.format( "\n%-10s", "Next:" );
+			for ( int i = ( wrap * WRAPLENGTH ); i < ( ( wrap+1 ) * WRAPLENGTH ) && i < nextEmpty; i++ ) {
+				if ( getNext( i ) == -1 )
+					output += String.format("%2c ", NEXTEMPTYCHAR);		//Left-justify a dash in a field of size 3
+				else
+					output += String.format("%2d ", getNext( i ));	//Left-justify the next value in a field of size 3
+			}
+			//***NEXT END***
+			output += "\n\n";
 		}
-	
+		//***End SYMBOL/NEXT ***
 		return output;
 	}
 	
