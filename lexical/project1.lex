@@ -92,7 +92,7 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> "}" { return new Yytoken( 41, "rightbrace" ); }
 <YYINITIAL> ({DIGIT}{DIGIT}*)|(("0x"|"0X")({DIGIT}|[a-f]|[A-F])({DIGIT}|[a-f]|[A-F])*) { return new Yytoken( 42, "intconstant" ); }
 <YYINITIAL> {DIGIT}{DIGIT}*"."{DIGIT}*(("E"|"e")("+"|"-")?{DIGIT})?{DIGIT}* { return new Yytoken( 43, "doubleconstant" ); }
-<YYINITIAL> \".*\" { return new Yytoken( 44, "stringconstant" ); }
+<YYINITIAL> \"{STRING_TEXT}\" { return new Yytoken( 44, "stringconstant" ); }
 <YYINITIAL> "true"|"false" { return new Yytoken( 45, "booleanconstant" ); }
 <YYINITIAL> {ALPHA}({ALPHA}|{DIGIT}|"_")* { return new Yytoken( 46, "id" ); }
 
