@@ -1,6 +1,7 @@
 PROJECTNAME=project1
+TESTFILE=toy.txt
 
-$(PROJECTNAME).java : $(PROJECTNAME).lex
+$(PROJECTNAME).java : $(PROJECTNAME).lex Trie.java
 	@echo Generating java code...
 	@java JLex.Main $(PROJECTNAME).lex
 	@echo -n Renaming output file...
@@ -10,6 +11,11 @@ $(PROJECTNAME).java : $(PROJECTNAME).lex
 	@javac $(PROJECTNAME).java
 	@echo done
 
+run :
+	@make --no-print-directory
+	@echo Running $(PROJECTNAME)...
+	@echo
+	@java $(PROJECTNAME) $(TESTFILE)
 
 clean :
 	@echo -n Cleaning...

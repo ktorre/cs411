@@ -4,6 +4,7 @@ public class Trie {
 
 	public static final int DEFAULT_SIZE = 1000; // Default allocation size for symbol/next array
 	public static final char DELIMITER = '@';
+	public static final char OUTPUTWRAPLENGTH = 20;
 
 	private int[] switchArray;
 	private char[] symbolArray;
@@ -199,14 +200,14 @@ public class Trie {
 
 	//*************** OUTPUT ***************
 	public String toString() {
-		String output = "";
+		String output = String.format("%-10s", " ");
 		for ( int i = 0; i < switchArray.length; i++ ) {
 			if ( i < 26 )
 				output += String.format("%2c ", (char)(i + 65));		//Left-justify the character in a field of size 3
 			else
 				output += String.format("%2c ", (char)(i + 71));		//Left-justify the character in a field of size 3
 		}
-		output += "\n";
+		output += String.format( "\n%-10s", "Switch:" );
 		for ( int i = 0; i < switchArray.length; i++ ) {
 			//if ( switchArray[ i ] != -1 )
 				output += String.format("%2d ", switchArray[ i ]);		//Left-justify the switchArray value in a field of size 3
@@ -215,7 +216,7 @@ public class Trie {
 		for ( int i = 0; i < nextEmpty; i++ ) {
 			output += String.format("%2d ", i);		//Left-justify the value of i in a field of size 3
 		}
-		output += "\n";
+		output += String.format( "\n%10s", "Symbol:" );
 
 		for ( int i = 0; i < nextEmpty; i++ ) {
 			output += String.format("%2c ", getSymbol( i ));	//Left-justify the Symbol at location i in a field of size 3
