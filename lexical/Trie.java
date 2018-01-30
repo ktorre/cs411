@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Trie {
 
-	public static final int DEFAULT_SIZE = 1000; // Default allocation size for symbol/next array
+	public static final int DEFAULT_SIZE = 100; // Default initial allocation size for symbol/next array
 	public static final char DELIMITER = '@';
 	public static final char NEXTEMPTYCHAR = ' ';
 	public static final char WRAPLENGTH = 20;
@@ -11,6 +11,7 @@ public class Trie {
 	private char[] symbolArray;
 	private int[] nextArray;
 	private int nextEmpty; // Always stores the latest empty space in symbolArray
+	private int currentSize;
 
 	//*************** CONSTRUCTOR ***************
 	public Trie() {
@@ -20,11 +21,12 @@ public class Trie {
 		//nextArray = new ArrayList<Integer>( DEFAULT_SIZE );
 		symbolArray = new char[ DEFAULT_SIZE ];
 		nextArray = new int[ DEFAULT_SIZE ];
+		currentSize = DEFAULT_SIZE;
 
 		// Fill switch array with -1
 		for ( int i = 0; i < switchArray.length; i++ ) { switchArray[ i ] = -1; }
 		
-		for ( int i = 0; i < DEFAULT_SIZE; i++ ) {
+		for ( int i = 0; i < currentSize; i++ ) {
 			nextArray[ i ] = -1;
 		}
 	}
@@ -57,6 +59,8 @@ public class Trie {
 	public int inputWord( char[] word ) {
 		// Making it return an int so we can use it for error handling/reporting
 		if(!containsWord( word )){
+			if ( ( nextEmpty + ( word.length + 1 )  ) > symbolArray.length )
+				grow();
 			int head = ( (int)word[ 0 ] - 65 );
 			//Check for the 6 characters between 'Z' and 'a'
 			if ( head > 25 && head < 32 )
@@ -199,25 +203,58 @@ public class Trie {
 		return false;	//The delimiter was not found therefore the word is not here
 	}
 
+	private void grow() {
+	    // Purpose: Increase array size if limit is reached
+	    int size = currentSize * 2;
+	    char[] tmpSymbol = new char[ size ];
+	    int[] tmpNext = new int[ size ];
+
+	    // Initialize next array
+	    for ( int i = 0; i < size; i++ ) { tmpNext[ i ] = -1; }
+
+	    for ( int i = 0; i < currentSize; i++ ) {
+		tmpSymbol[ i ] = symbolArray[ i ];
+		tmpNext[ i ] = nextArray[ i ];
+	    }
+
+	    symbolArray = tmpSymbol;
+	    nextArray = tmpNext;
+	    currentSize = size;
+	}
+
 	//*************** OUTPUT ***************
 	public String toString() {
 		// Purpose: Print table
 
+		// width for spacing out fields depending on how high table goes
+		int width = 2;
+		if ( nextEmpty > 99 ) {
+		    width = 3;
+		} else if ( nextEmpty > 999 ) {
+		    width = 4;
+		}
+
 		String output = "\n\n";
 		//***SWITCH ARRAY OUTPUT***
 		//In order to make the switch array wrap with the index loop, had to make them both rely on the same variable ( wrap )
-		for ( int wrap = 0; wrap < ( ( switchArray.length / WRAPLENGTH ) + 1 ); wrap++) {
+		int wrapcap;
+		if ( switchArray.length % WRAPLENGTH == 0 ) {
+		    wrapcap = switchArray.length / WRAPLENGTH;
+		} else {
+		    wrapcap = ( switchArray.length / WRAPLENGTH ) + 1;
+		}
+		for ( int wrap = 0; wrap < wrapcap; wrap++) {
 			output += String.format("%-10s", " ");
 			for ( int i = ( wrap * WRAPLENGTH ); i < ( ( wrap+1 ) * WRAPLENGTH ) && i < switchArray.length; i++ ) {
 				if ( i < 26 )
-					output += String.format("%2c ", (char)(i + 65));		//Left-justify the character in a field of size 3
+					output += String.format("%" + width + "c ", (char)(i + 65));		//Left-justify the character in a field of size 3
 				else
-					output += String.format("%2c ", (char)(i + 71));		//Left-justify the character in a field of size 3
+					output += String.format("%" + width + "c ", (char)(i + 71));		//Left-justify the character in a field of size 3
 			}
 			output += String.format( "\n%-10s", "Switch:" );
 			for ( int i = ( wrap * WRAPLENGTH ); i < ( ( wrap+1 ) * WRAPLENGTH ) && i < switchArray.length; i++ ) {
 				//if ( switchArray[ i ] != -1 )
-				output += String.format("%2d ", switchArray[ i ]);		//Left-justify the switchArray value in a field of size 3
+				output += String.format("%" + width + "d ", switchArray[ i ]);		//Left-justify the switchArray value in a field of size 3
 			}
 			output += "\n\n";
 		}
@@ -226,11 +263,16 @@ public class Trie {
 		output += "\n";
 		//***SYMBOL/NEXT***
 		//Same idea as the switch array, but this one's for the index loop, symbol array, and next array
-		for ( int wrap = 0; wrap < ( ( nextEmpty / WRAPLENGTH ) + 1 ); wrap++) {
+		if ( nextEmpty % WRAPLENGTH == 0 ) {
+		    wrapcap = nextEmpty / WRAPLENGTH;
+		} else {
+		    wrapcap = ( nextEmpty / WRAPLENGTH ) + 1;
+		}
+		for ( int wrap = 0; wrap < wrapcap; wrap++) {
 			//***SYMBOL/NEXT INDEX***
 			output += String.format( "%-10s", " " );
 			for ( int i = ( wrap * WRAPLENGTH ); i < ( ( wrap+1 ) * WRAPLENGTH ) && i < nextEmpty; i++ ) {
-				output += String.format("%2d ", i);		//Left-justify the value of i in a field of size 3
+				output += String.format("%" + width + "d ", i);		//Left-justify the value of i in a field of size 3
 			}
 			//***END INDEX***
 			
@@ -238,7 +280,7 @@ public class Trie {
 			output += String.format( "\n%-10s", "Symbol:" );
 
 			for ( int i = ( wrap * WRAPLENGTH ); i < ( ( wrap+1 ) * WRAPLENGTH ) && i < nextEmpty; i++ ) {
-				output += String.format("%2c ", getSymbol( i ));	//Left-justify the Symbol at location i in a field of size 3
+				output += String.format("%" + width + "c ", getSymbol( i ));	//Left-justify the Symbol at location i in a field of size 3
 			}
 			//***END SYMBOL***
 			
@@ -246,12 +288,13 @@ public class Trie {
 			output += String.format( "\n%-10s", "Next:" );
 			for ( int i = ( wrap * WRAPLENGTH ); i < ( ( wrap+1 ) * WRAPLENGTH ) && i < nextEmpty; i++ ) {
 				if ( getNext( i ) == -1 )
-					output += String.format("%2c ", NEXTEMPTYCHAR);		//Left-justify a dash in a field of size 3
+					output += String.format("%" + width + "c ", NEXTEMPTYCHAR);		//Left-justify a dash in a field of size 3
 				else
-					output += String.format("%2d ", getNext( i ));	//Left-justify the next value in a field of size 3
+					output += String.format("%" + width + "d ", getNext( i ));	//Left-justify the next value in a field of size 3
 			}
 			//***NEXT END***
-			output += "\n\n";
+			if ( ( wrap + 1 ) != wrapcap )
+			    output += "\n\n";
 		}
 		//***End SYMBOL/NEXT ***
 		return output;
