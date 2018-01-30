@@ -14,7 +14,11 @@ class project1 {
 			    while ( ( t = yy.yylex() ) != null )  {
 				if ( ( t.t_id >= 0 && t.t_id <= 17 ) || t.t_id == 46 )
 					table.inputWord( t.toString() );
-				System.out.print( t + " " );
+				if ( t.t_id == 46 ) {
+				    System.out.print( "id" + " " );
+				} else {
+				    System.out.print( t + " " );
+				}
 			    }
 		    }
 		} else {
@@ -101,7 +105,7 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> {DIGIT}{DIGIT}*"."{DIGIT}*(("E"|"e")("+"|"-")?{DIGIT})?{DIGIT}* { return new Yytoken( 43, "doubleconstant" ); }
 <YYINITIAL> \"{STRING_TEXT}\" { return new Yytoken( 44, "stringconstant" ); }
 <YYINITIAL> "true"|"false" { return new Yytoken( 45, "booleanconstant" ); }
-<YYINITIAL> {ALPHA}({ALPHA}|{DIGIT}|"_")* { return new Yytoken( 46, "id" ); }
+<YYINITIAL> {ALPHA}({ALPHA}|{DIGIT}|"_")* { return new Yytoken( 46, yytext() ); }
 
 <YYINITIAL> ";"\n { System.out.println("semicolon"); }
 <YYINITIAL> "{"\n { System.out.println("leftbrace"); }
