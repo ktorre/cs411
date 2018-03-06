@@ -12,7 +12,12 @@ init with {: s.init(); :};
 scan with {: return s.next_token(); :};
 
 /* Terminals (tokens returned by the scanner). */
-terminal            Program, 
+terminal            id,
+		    int; 
+terminal Integer    NUMBER;        // our scanner provides numbers as integers
+
+/* Non terminals */
+non terminal	    Program, 
 		    Decl, 
 		    VariableDecl, 
 		    Variable, 
@@ -41,10 +46,7 @@ terminal            Program,
 		    Call,
 		    Actuals,
 		    Constant;
-terminal Integer    NUMBER;        // our scanner provides numbers as integers
 
-/* Non terminals */
-non terminal            expr_list;
 non terminal Integer    expr;      // used to store evaluated subexpressions
 
 /* Precedences */
