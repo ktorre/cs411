@@ -12,9 +12,53 @@ init with {: s.init(); :};
 scan with {: return s.next_token(); :};
 
 /* Terminals (tokens returned by the scanner). */
-terminal            id,
-		    int; 
-terminal Integer    NUMBER;        // our scanner provides numbers as integers
+terminal	boolean,
+		break,
+		class,
+		double,
+		else,
+		extends,
+		for,
+		if,
+		implements,
+		int,
+		interface,
+		newarray,
+		println,
+		readln,
+		return,
+		string,
+		void,
+		while,
+		plus,
+		minus,
+		multiplication,
+		division,
+		mod,
+		less,
+		lessequal,
+		greater,
+		greaterequal,
+		equal,
+		notequal,
+		and,
+		or,
+		not,
+		assignop,
+		semicolon,
+		comma,
+		period,
+		leftparen,
+		rightparen,
+		reftbracket,
+		rightbracket,
+		leftbrace,
+		rightbrace,
+		intconstant,
+		doubleconstant,
+		stringconstant,
+		booleanconstant,
+		id;
 
 /* Non terminals */
 non terminal	    Program, 
@@ -46,8 +90,6 @@ non terminal	    Program,
 		    Call,
 		    Actuals,
 		    Constant;
-
-non terminal Integer    expr;      // used to store evaluated subexpressions
 
 /* Precedences */
 precedence left PLUS, MINUS;
