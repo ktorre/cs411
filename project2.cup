@@ -113,7 +113,7 @@ precedence left leftbrace,
 		period;
 
 /* The grammar rules */
-expr_list ::= expr_list expr:e SEMI         {: System.out.println(e);:}
+Program ::= expr_list expr:e SEMI         {: System.out.println(e);:}
             | expr:e SEMI                   {: System.out.println(e);:}
 ;
 expr      ::= expr:e1 PLUS  expr:e2         {: RESULT = e1+e2;       :}
@@ -123,4 +123,130 @@ expr      ::= expr:e1 PLUS  expr:e2         {: RESULT = e1+e2;       :}
   	     %prec UMINUS
        | LPAREN expr:e RPAREN	         {: RESULT = e;           :}
        | NUMBER:n	                     {: RESULT = n;           :}
-             ;
+;
+Program ::= Decl
+;
+Decl ::= VariableDecl Decl
+       | FunctionDecl Decl
+       | ClassDecl Decl
+       | InterfaceDecl Decl
+       | VariableDecl
+       | FunctionDecl
+       | ClassDecl
+       | InterfaceDecl
+;
+VariableDecl ::= Variable semicolon
+;
+Variable ::= Type id
+;
+Type ::= int
+       | double
+       | boolean
+       | string
+       | Type leftbracket rightbracket
+       | id
+;
+FunctionDecl ::= Type id leftparen Formals rightparen StmtBlock
+	       | void id leftparen Formals rightparen StmtBlock
+	       | Type id leftparen rightparen StmtBlock
+	       | void id leftparen rightparen StmtBlock
+;
+Formals ::= Variable
+	  | Variable comma Formals
+;
+ClassDecl ::= class id leftbrace Field rightbrace
+	    | class id extends id leftbrace Field rightbrace
+	    | class id implements idListItem leftbrace Field rightbrace
+	    | class id extends id implements idListItem leftbrace Field rightbrace
+;
+idListItem ::= id
+	     | id comma idListItem
+;
+Field ::= /*not sure what to do for epsilon*/
+	| VariableDecl Field
+	| FunctionDecl Field
+;
+InterfaceDecl ::= interface id leftbrace MultiplePrototype rightbrace
+;
+MultiplePrototype ::= /*not sure what to do for epsilon*/
+		    | Prototype MultiplePrototype
+;
+Prototype ::= Type id leftparen Formals rightparen semicolon
+	    | void id leftparen Formals rightparen semicolon
+;
+StmtBlock ::= leftbrace MultipleVariableDecl MultipleStmt rightbrace
+;
+MultipleVariableDecl ::= /*not sure what to do for epsilon*/
+		       | VariableDecl MultipleVariableDecl
+;
+MultipleStmt ::= /*not sure what to do for epsilon*/
+	       | MultipleStmt Stmt
+;
+Stmt ::= semicolon
+       | Expr semicolon
+       | IfStmt
+       | WhileStmt
+       | ForStmt
+       | BreakStmt
+       | ReturnStmt
+       | PrintStmt
+       | StmtBlock
+;
+IfStmt ::= if leftparen Expr rightparen Stmt
+	 | if leftparen Expr rightparen else Stmt
+;
+WhileStmt ::= while leftparen Expr rightparen Stmt
+;
+ForStmt ::= for leftparen semicolon Expr semicolon rightparen Stmt
+	  | for leftparen Expr semicolon Expr semicolon rightparen stmt
+	  | for leftparen semicolon Expr semicolon Expr rightparen stmt
+	  | for leftparen Expr semicolon Expr semicolon Expr rightparen Stmt
+;
+BreakStmt ::= break semicolon
+;
+ReturnStmt ::= return semicolon
+	     | return Expr semicolon
+;
+PrintStmt ::= println leftparen ExprListItem rightparen semicolon
+;
+ExprListItem ::= Expr comma ExprListItem
+	       | Expr
+;
+Expr ::= Lvalue assignop Expr
+       | Constant
+       | Lvalue
+       | Call
+       | leftparen Expr rightparen
+       | Expr plus Expr
+       | Expr minus Expr
+       | Expr multiplication Expr
+       | Expr division Expr
+       | Expr mod Expr
+       | /*unary minus*/ Expr
+       | Expr less Expr
+       | Expr lessequal Expr
+       | Expr greater Expr
+       | Expr greaterequal Expr
+       | Expr equal Expr
+       | Expr notequal Expr
+       | Expr and Expr
+       | Expr or Expr
+       | not Expr
+       | readln leftparen rightparen
+       | newarray leftparen intconstant comma Type rightparen
+;
+Lvalue ::= id
+	 | Lvalue leftbracket Expr rightbracket
+	 | Lvalue period id
+;
+Call ::= id leftparen Actuals rightparen
+       | id period id leftparen Actuals rightparen
+;
+Actuals ::= ExprListItem
+	  | /*not sure how to do epsilon*/
+;
+Constant ::= intconstant
+	   | doubleconstant
+	   | stringconstant
+	   | booleanconstant
+;
