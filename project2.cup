@@ -92,9 +92,25 @@ non terminal	    Program,
 		    Constant;
 
 /* Precedences */
-precedence left PLUS, MINUS;
-precedence left TIMES;
-precedence left UMINUS;
+precedence left assignop;
+precedence left or;
+precedence left and;
+precedence left equal, 
+		notequal;
+precedence left less, 
+		lessequal, 
+		greater, 
+		greaterequal;
+precedence left plus, 
+		minus;
+precedence left multiplication,
+		division,
+		mod;
+precedence left not;
+		/*missing unary minus*/
+precedence left leftbrace,
+		rightbrace,
+		period;
 
 /* The grammar rules */
 expr_list ::= expr_list expr:e SEMI         {: System.out.println(e);:}
