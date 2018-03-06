@@ -12,35 +12,7 @@ init with {: s.init(); :};
 scan with {: return s.next_token(); :};
 
 /* Terminals (tokens returned by the scanner). */
-terminal            Program, 
-		    Decl, 
-		    VariableDecl, 
-		    Variable, 
-		    Type,
-		    FunctionDecl, 
-		    Formals,
-		    ClassDecl,
-		    idListItem,
-		    Field,
-		    InterfaceDecl,
-		    MultiplePrototype,
-		    Prototype,
-		    StmtBlock,
-		    MultipleVariableDecl,
-		    MultipleStmt
-		    Stmt,
-		    IfStmt,
-		    WhileStmt,
-		    ForStmt,
-		    BreakStmt,
-		    ReturnStmt,
-		    PrintStmt,
-		    ExprListItem,
-		    Expr,
-		    Lvalue,
-		    Call,
-		    Actuals,
-		    Constant;
+terminal            SEMI, PLUS, MINUS, TIMES, UMINUS, LPAREN, RPAREN;
 terminal Integer    NUMBER;        // our scanner provides numbers as integers
 
 /* Non terminals */
