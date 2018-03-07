@@ -113,17 +113,6 @@ precedence left leftbrace,
 		period;
 
 /* The grammar rules */
-Program ::= expr_list expr:e SEMI         {: System.out.println(e);:}
-            | expr:e SEMI                   {: System.out.println(e);:}
-;
-expr      ::= expr:e1 PLUS  expr:e2         {: RESULT = e1+e2;       :}
-             | expr:e1 MINUS expr:e2        {: RESULT = e1-e2;       :}
-             | expr:e1 TIMES expr:e2        {: RESULT = e1*e2;       :}
-             | MINUS expr:e                 {: RESULT = -e;          :}
-  	     %prec UMINUS
-       | LPAREN expr:e RPAREN	         {: RESULT = e;           :}
-       | NUMBER:n	                     {: RESULT = n;           :}
-;
 Program ::= Decl
 ;
 Decl ::= VariableDecl Decl
@@ -158,29 +147,37 @@ ClassDecl ::= class id leftbrace Field rightbrace
 	    | class id extends id leftbrace Field rightbrace
 	    | class id implements idListItem leftbrace Field rightbrace
 	    | class id extends id implements idListItem leftbrace Field rightbrace
+	    | class id leftbrace rightbrace
+	    | class id extends id leftbrace rightbrace
+	    | class id implements idListItem leftbrace rightbrace
+	    | class id extends id implements idListItem leftbrace rightbrace
 ;
 idListItem ::= id
 	     | id comma idListItem
 ;
-Field ::= /*not sure what to do for epsilon*/
-	| VariableDecl Field
+Field ::= VariableDecl Field
 	| FunctionDecl Field
+	| VariableDecl
+	| FunctionDecl
 ;
 InterfaceDecl ::= interface id leftbrace MultiplePrototype rightbrace
+		| interface id leftbrace rightbrace
 ;
-MultiplePrototype ::= /*not sure what to do for epsilon*/
-		    | Prototype MultiplePrototype
+MultiplePrototype ::= Prototype MultiplePrototype
 ;
 Prototype ::= Type id leftparen Formals rightparen semicolon
 	    | void id leftparen Formals rightparen semicolon
+	    | Type id leftparen rightparen semicolon
+	    | void id leftparen rightparen semicolon
 ;
 StmtBlock ::= leftbrace MultipleVariableDecl MultipleStmt rightbrace
+	    | leftbrace MultipleVariableDecl rightbrace
+	    | leftbrace MultipleStmt rightbrace
+	    | leftbrace rightbrace
 ;
-MultipleVariableDecl ::= /*not sure what to do for epsilon*/
-		       | VariableDecl MultipleVariableDecl
+MultipleVariableDecl ::= VariableDecl MultipleVariableDecl
 ;
-MultipleStmt ::= /*not sure what to do for epsilon*/
-	       | MultipleStmt Stmt
+MultipleStmt ::= MultipleStmt Stmt
 ;
 Stmt ::= semicolon
        | Expr semicolon
@@ -241,9 +238,10 @@ Lvalue ::= id
 ;
 Call ::= id leftparen Actuals rightparen
        | id period id leftparen Actuals rightparen
+       | id leftparen rightparen
+       | id period id leftparen rightparen
 ;
 Actuals ::= ExprListItem
-	  | /*not sure how to do epsilon*/
 ;
 Constant ::= intconstant
 	   | doubleconstant
