@@ -2,14 +2,16 @@
 import java_cup.runtime.*;
 
 parser code {:
-    // Connect this parser to a scanner!
-    scanner s;
-    Parser(scanner s){ this.s=s; }
+    public static void main( String[] args ) throws Exception {
+	ComplexSymbolFactory sf = new ComplexSymbolFactory();
+	new ParserP2( new lexer( System.in, sf ), sf ).parse();
+    }
+
 :}
 
 /* define how to connect to the scanner! */
-init with {: s.init(); :};
-scan with {: return s.next_token(); :};
+//init with {: s.init(); :};
+//scan with {: return s.next_token(); :};
 
 /* Terminals (tokens returned by the scanner). */
 terminal	_boolean,

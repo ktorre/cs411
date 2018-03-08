@@ -1,24 +1,24 @@
-PROJECT1NAME=project1
+PROJECT1NAME=lexer
 PROJECT2NAME=project2
 TRIEFILE=Trie
 TESTFILE=toy.txt
-PARSERNAME=Parser
+PARSERNAME=ParserP2
 CUPJAR=java-cup-11b.jar
 CUPJARRUNTIME=java-cup-11b-runtime.jar
-PROJECT1CLEANUPFILES=$(PROJECT1NAME).java $(PROJECT1NAME).class Yytoken.class Yylex.class $(TRIEFILE).class
-PROJECT2CLEANUPFILES=$(PARSERNAME).java sym.java
+PROJECT1CLEANUPFILES=$(PROJECT1NAME).java Main.java *.class
+PROJECT2CLEANUPFILES=$(PARSERNAME).java sym.java 
 
-main : $(PROJECT1NAME).java $(TRIEFILE).class $(PARSERNAME).java
-	@echo 
+main : $(PROJECT1NAME).class $(PARSERNAME).class
+	@echo Done
 
-$(PROJECT1NAME).java : $(PROJECT1NAME).lex
+$(PROJECT1NAME).class : $(PROJECT1NAME).lex sym.class
 	@echo Generating java code...
 	@java JLex.Main $(PROJECT1NAME).lex
 	@echo -n Renaming output file...
 	@mv $(PROJECT1NAME).lex.java $(PROJECT1NAME).java
 	@echo done
 	@echo -n Compiling $(PROJECT1NAME)...
-	@javac $(PROJECT1NAME).java
+	@javac -cp $(CUPJARRUNTIME):. $(PROJECT1NAME).java
 	@echo done
 
 $(TRIEFILE).class : $(TRIEFILE).java
@@ -26,11 +26,20 @@ $(TRIEFILE).class : $(TRIEFILE).java
 	@javac $(TRIEFILE).java
 	@echo done
 
-$(PARSERNAME).java : $(PROJECT2NAME).cup
-	@echo -n Generating parser...
-	@java -jar $(CUPJAR) -interface -parser $(PARSERNAME) $(PROJECT2NAME).cup
+$(PARSERNAME).class : $(PROJECT2NAME).cup
+	@echo -n Compiling parser...
+	@javac -cp $(CUPJARRUNTIME):. $(PARSERNAME).java
 	@echo done
 
+sym.class :
+	@echo Generating parser file...
+	@java -jar $(CUPJAR) -parser $(PARSERNAME) $(PROJECT2NAME).cup
+
+$(PROJECT2NAME).class : $(PARSERNAME).class
+	@echo -n Compiling project 2...
+	@javac -cp $(CUPJARRUNTIME):. $(PROJECT2NAME).java
+	@echo done
+	
 run :
 	@make --no-print-directory
 	@echo Running $(PROJECT1NAME)...
