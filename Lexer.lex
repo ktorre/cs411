@@ -4,7 +4,6 @@ import java.io.FileReader;
 
 %%
 %cup
-%state COMMENT
 ALPHA=[A-Za-z]
 DIGIT=[0-9]
 NONNEWLINE_WHITE_SPACE_CHAR=[\ \t\b\012]
@@ -82,13 +81,14 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> "{"\n { return symbol( "_leftbrace", sym._leftbrace ); }
 <YYINITIAL> "}"\n { return symbol( "_rightbrace", sym._rightbrace ); }
 
+<YYINITIAL> ^"//".*\n {}
 <YYINITIAL> "//".* {}
-<YYINITIAL> "/*" { yybegin( COMMENT ); }
-<COMMENT> "*/" { yybegin( YYINITIAL ); }
-<COMMENT> {COMMENT_TEXT} {}
+<YYINITIAL> "/*"({COMMENT_TEXT}|\n)*"*/"\n {}
+<YYINITIAL> "/*"({COMMENT_TEXT}|\n)*"*/"{WHITE_SPACE_CHAR}*\n {}
 
-<YYINITIAL, COMMENT> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
-<COMMENT> \n {}
+<YYINITIAL> ^\n {}
+<YYINITIAL> {WHITE_SPACE_CHAR}*\n { System.out.println( "" ); }
+<YYINITIAL> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
 
 <YYINITIAL> . {
 	System.out.println( "Token not implemented yet: " + sym.error );
