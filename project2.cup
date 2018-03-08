@@ -13,6 +13,7 @@ parser code {:
 	ComplexSymbolFactory csf = new ComplexSymbolFactory();
 	ScannerBuffer buff = new ScannerBuffer( new Lexer( new BufferedReader( new InputStreamReader( System.in ) ), csf ) );
 	Parser p = new Parser( buff, csf );
+	p.parse();
 	
     }
 
