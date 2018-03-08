@@ -1,3 +1,4 @@
+
 /* Simple +/-/* expression language; parser evaluates constant expressions on the fly*/
 import java_cup.runtime.*;
 import java.io.*;
@@ -27,6 +28,7 @@ terminal	_boolean,
 		_class,
 		_double,
 		_else,
+		_no_else,
 		_extends,
 		_for,
 		_if,
@@ -122,6 +124,8 @@ precedence left _not,
 precedence left _leftbrace,
 		_rightbrace,
 		_period;
+precedence nonassoc _no_else;
+precedence nonassoc _else;
 
 /* The grammar rules */
 Program ::= Decl
@@ -174,7 +178,7 @@ Field ::= VariableDecl Field
 InterfaceDecl ::= _interface _id _leftbrace MultiplePrototype _rightbrace
 		| _interface _id _leftbrace _rightbrace
 ;
-MultiplePrototype ::= Prototype MultiplePrototype
+MultiplePrototype ::= MultiplePrototype Prototype
 ;
 Prototype ::= Type _id _leftparen Formals _rightparen _semicolon
 	    | _void _id _leftparen Formals _rightparen _semicolon
@@ -186,7 +190,7 @@ StmtBlock ::= _leftbrace MultipleVariableDecl MultipleStmt _rightbrace
 	    | _leftbrace MultipleStmt _rightbrace
 	    | _leftbrace _rightbrace
 ;
-MultipleVariableDecl ::= VariableDecl MultipleVariableDecl
+MultipleVariableDecl ::= MultipleVariableDecl VariableDecl
 ;
 MultipleStmt ::= MultipleStmt Stmt
 ;
@@ -200,8 +204,8 @@ Stmt ::= _semicolon
        | PrintStmt
        | StmtBlock
 ;
-IfStmt ::= _if _leftparen Expr _rightparen Stmt
-	 | _if _leftparen Expr _rightparen _else Stmt
+IfStmt ::= _if _leftparen Expr _rightparen Stmt %prec _no_else
+	 | _if _leftparen Expr _rightparen Stmt _else Stmt
 ;
 WhileStmt ::= _while _leftparen Expr _rightparen Stmt
 ;
