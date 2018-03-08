@@ -193,7 +193,7 @@ Stmt ::= _semicolon
        | StmtBlock
 ;
 IfStmt ::= _if _leftparen Expr _rightparen Stmt
-	 | _if _leftparen Expr _rightparen _else Stmt
+	 | _if _leftparen Expr _rightparen Stmt _else Stmt
 ;
 WhileStmt ::= _while _leftparen Expr _rightparen Stmt
 ;
