@@ -6,56 +6,57 @@
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int _plus = 20;
-  public static final int _assignop = 35;
-  public static final int _mod = 25;
-  public static final int _println = 14;
-  public static final int _greater = 28;
-  public static final int _return = 16;
-  public static final int _leftbrace = 43;
-  public static final int _minus = 21;
-  public static final int _rightbracket = 42;
-  public static final int _readln = 15;
-  public static final int _void = 18;
-  public static final int _comma = 37;
+  public static final int _plus = 21;
+  public static final int _assignop = 36;
+  public static final int _mod = 26;
+  public static final int _println = 15;
+  public static final int _greater = 29;
+  public static final int _return = 17;
+  public static final int _leftbrace = 44;
+  public static final int _minus = 22;
+  public static final int _rightbracket = 43;
+  public static final int _readln = 16;
+  public static final int _void = 19;
+  public static final int _comma = 38;
   public static final int _class = 4;
-  public static final int _multiplication = 23;
+  public static final int _multiplication = 24;
   public static final int _else = 6;
-  public static final int _division = 24;
+  public static final int _no_else = 7;
+  public static final int _division = 25;
   public static final int _boolean = 2;
-  public static final int _equal = 30;
-  public static final int _rightbrace = 44;
-  public static final int _leftbracket = 41;
+  public static final int _equal = 31;
+  public static final int _rightbrace = 45;
+  public static final int _leftbracket = 42;
   public static final int EOF = 0;
-  public static final int _string = 17;
+  public static final int _string = 18;
   public static final int error = 1;
   public static final int _break = 3;
-  public static final int _interface = 12;
-  public static final int _or = 33;
-  public static final int _leftparen = 39;
-  public static final int _notequal = 31;
-  public static final int _semicolon = 36;
-  public static final int _if = 9;
-  public static final int _id = 49;
-  public static final int _while = 19;
-  public static final int _lessequal = 27;
-  public static final int _doubleconstant = 46;
-  public static final int _int = 11;
-  public static final int _implements = 10;
-  public static final int _greaterequal = 29;
-  public static final int _period = 38;
-  public static final int _uminus = 22;
-  public static final int _extends = 7;
-  public static final int _for = 8;
-  public static final int _not = 34;
-  public static final int _and = 32;
+  public static final int _interface = 13;
+  public static final int _or = 34;
+  public static final int _leftparen = 40;
+  public static final int _notequal = 32;
+  public static final int _semicolon = 37;
+  public static final int _if = 10;
+  public static final int _id = 50;
+  public static final int _while = 20;
+  public static final int _lessequal = 28;
+  public static final int _doubleconstant = 47;
+  public static final int _int = 12;
+  public static final int _implements = 11;
+  public static final int _greaterequal = 30;
+  public static final int _period = 39;
+  public static final int _uminus = 23;
+  public static final int _extends = 8;
+  public static final int _for = 9;
+  public static final int _not = 35;
+  public static final int _and = 33;
   public static final int _double = 5;
-  public static final int _newarray = 13;
-  public static final int _stringconstant = 47;
-  public static final int _intconstant = 45;
-  public static final int _booleanconstant = 48;
-  public static final int _less = 26;
-  public static final int _rightparen = 40;
+  public static final int _newarray = 14;
+  public static final int _stringconstant = 48;
+  public static final int _intconstant = 46;
+  public static final int _booleanconstant = 49;
+  public static final int _less = 27;
+  public static final int _rightparen = 41;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -64,6 +65,7 @@ public class sym {
   "_class",
   "_double",
   "_else",
+  "_no_else",
   "_extends",
   "_for",
   "_if",
