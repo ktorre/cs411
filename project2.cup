@@ -180,6 +180,7 @@ InterfaceDecl ::= _interface _id _leftbrace MultiplePrototype _rightbrace
 		| _interface _id _leftbrace _rightbrace
 ;
 MultiplePrototype ::= MultiplePrototype Prototype
+		    | Prototype
 ;
 Prototype ::= Type _id _leftparen Formals _rightparen _semicolon
 	    | _void _id _leftparen Formals _rightparen _semicolon
@@ -192,8 +193,10 @@ StmtBlock ::= _leftbrace MultipleVariableDecl MultipleStmt _rightbrace
 	    | _leftbrace _rightbrace
 ;
 MultipleVariableDecl ::= MultipleVariableDecl VariableDecl
+		       | VariableDecl
 ;
 MultipleStmt ::= MultipleStmt Stmt
+	       | Stmt
 ;
 Stmt ::= _semicolon
        | Expr _semicolon

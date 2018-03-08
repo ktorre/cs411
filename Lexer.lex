@@ -23,7 +23,7 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
     }
 
 %}
-	
+
 %eofval{
     return sf.newSymbol( "EOF", sym.EOF );
 %eofval}
@@ -77,10 +77,6 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> "true"|"false" { return symbol( "_booleanconstant", sym._booleanconstant ); }
 <YYINITIAL> {ALPHA}({ALPHA}|{DIGIT}|"_")* { return symbol( "_id", sym._id ); }
 
-<YYINITIAL> ";"\n { return symbol( "_semicolon", sym._semicolon ); }
-<YYINITIAL> "{"\n { return symbol( "_leftbrace", sym._leftbrace ); }
-<YYINITIAL> "}"\n { return symbol( "_rightbrace", sym._rightbrace ); }
-
 <YYINITIAL> ^"//".*\n {}
 <YYINITIAL> "//".* {}
 <YYINITIAL> "/*"({COMMENT_TEXT}|\n)*"*/"\n {}
@@ -92,5 +88,5 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 
 <YYINITIAL> . {
 	System.out.println( "Token not implemented yet: " + sym.error );
-	
+
 }
