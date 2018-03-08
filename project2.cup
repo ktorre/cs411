@@ -1,10 +1,18 @@
 /* Simple +/-/* expression language; parser evaluates constant expressions on the fly*/
 import java_cup.runtime.*;
+import java.io.*;
+import java_cup.runtime.ScannerBuffer;
 
 parser code {:
+    public Parser ( Lexer lex, ComplexSymbolFactory sf ) {
+	super( lex, sf );
+    }
+
     public static void main( String[] args ) throws Exception {
-	ComplexSymbolFactory sf = new ComplexSymbolFactory();
-	new ParserP2( new lexer( System.in, sf ), sf ).parse();
+	ComplexSymbolFactory csf = new ComplexSymbolFactory();
+	ScannerBuffer buff = new ScannerBuffer( new Lexer( new BufferedReader( new InputStreamReader( System.in ) ), csf ) );
+	Parser p = new Parser( buff, csf );
+	
     }
 
 :}

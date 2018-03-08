@@ -1,8 +1,8 @@
-PROJECT1NAME=lexer
+PROJECT1NAME=Lexer
 PROJECT2NAME=project2
 TRIEFILE=Trie
 TESTFILE=toy.txt
-PARSERNAME=ParserP2
+PARSERNAME=Parser
 CUPJAR=java-cup-11b.jar
 CUPJARRUNTIME=java-cup-11b-runtime.jar
 PROJECT1CLEANUPFILES=$(PROJECT1NAME).java Main.java *.class
@@ -18,7 +18,7 @@ $(PROJECT1NAME).class : $(PROJECT1NAME).lex sym.class
 	@mv $(PROJECT1NAME).lex.java $(PROJECT1NAME).java
 	@echo done
 	@echo -n Compiling $(PROJECT1NAME)...
-	@javac -cp $(CUPJARRUNTIME):. $(PROJECT1NAME).java
+	@javac -Xlint:none -cp $(CUPJARRUNTIME):. $(PROJECT1NAME).java
 	@echo done
 
 $(TRIEFILE).class : $(TRIEFILE).java
@@ -31,7 +31,7 @@ $(PARSERNAME).class : $(PROJECT2NAME).cup
 	@javac -cp $(CUPJARRUNTIME):. $(PARSERNAME).java
 	@echo done
 
-sym.class :
+sym.class : $(PROJECT2NAME).cup
 	@echo Generating parser file...
 	@java -jar $(CUPJAR) -parser $(PARSERNAME) $(PROJECT2NAME).cup
 
@@ -44,7 +44,7 @@ run :
 	@make --no-print-directory
 	@echo Running $(PROJECT1NAME)...
 	@echo
-	@java $(PROJECT1NAME) $(TESTFILE)
+	@java -cp $(CUPJARRUNTIME):. $(PARSERNAME)
 
 clean :
 	@echo -n Cleaning lexical analyzer files...
