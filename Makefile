@@ -34,6 +34,7 @@ $(PARSERNAME).class : $(PROJECT2NAME).cup
 sym.class : $(PROJECT2NAME).cup
 	@echo Generating parser file...
 	@java -jar $(CUPJAR) -parser $(PARSERNAME) $(PROJECT2NAME).cup
+	@javac sym.java
 
 $(PROJECT2NAME).class : $(PARSERNAME).class
 	@echo -n Compiling project 2...
