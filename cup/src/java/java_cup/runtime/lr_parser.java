@@ -668,6 +668,9 @@ public abstract class lr_parser {
       stack.push(getSymbolFactory().startSymbol("START", 0, start_state()));
       tos = 0;
 
+      int numReduce = 0;	//Keeps track of when to print the next symbol when reducing
+      boolean reducedAlready = false; //Keeps track when to print the next symbol when shifting
+
       /* continue until we are told to stop */
       for (_done_parsing = false; !_done_parsing; )
 	{
@@ -687,11 +690,16 @@ public abstract class lr_parser {
 	      cur_token.parse_state = act-1;
 	      cur_token.used_by_parser = true;
 	      stack.push(cur_token);
-	      System.out.println( cur_token + " [shift]" );
+	      if(!reducedAlready)
+	      	System.out.println( cur_token +  "[shift]" );
+	      else
+		System.out.println( "[shift]" );
 	      tos++;
 
 	      /* advance to the next Symbol */
 	      cur_token = scan();
+	      numReduce = 0;
+	      reducedAlready = false;
 	    }
 	  /* if its less than zero, then it encodes a reduce action */
 	  else if (act < 0)
@@ -702,6 +710,15 @@ public abstract class lr_parser {
 	      /* look up information about the production */
 	      lhs_sym_num = production_tab[(-act)-1][0];
 	      handle_size = production_tab[(-act)-1][1];
+
+	      if(numReduce == 0)
+	      {
+		System.out.print(cur_token);
+	      	reducedAlready = true;
+	      }
+
+	      System.out.print("[Reduce " + lhs_sym_num + "]");
+	      numReduce++;
 
 	      /* pop the handle off the stack */
 	      for (int i = 0; i < handle_size; i++)

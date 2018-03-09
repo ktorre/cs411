@@ -135,43 +135,40 @@ precedence left _leftbrace,
 		_period;
 
 /* The grammar rules */
-Program ::= Decl {:
-    System.out.print( cur_token.toString() );
-    System.out.println("[Reduce 1]");
-    :}
+Program ::= Decl
 ;
-Decl ::= VariableDecl Decl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 2]");:}
-       | FunctionDecl Decl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 3]");:}
-       | ClassDecl Decl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 4]");:}
-       | InterfaceDecl Decl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 5]");:}
-       | VariableDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 6]");:}
-       | FunctionDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 7]");:}
-       | ClassDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 8]");:}
-       | InterfaceDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 9]");:}
+Decl ::= VariableDecl Decl
+       | FunctionDecl Decl
+       | ClassDecl Decl
+       | InterfaceDecl Decl
+       | VariableDecl
+       | FunctionDecl
+       | ClassDecl
+       | InterfaceDecl
 ;
-VariableDecl ::= Variable _semicolon {:System.out.print( cur_token.toString() );System.out.println("[Reduce 10]");:}
+VariableDecl ::= Variable _semicolon
 ;
-Variable ::= Type _id {:System.out.print( cur_token.toString() );System.out.println("[Reduce 11]");:}
-	   | _id _id {:System.out.print( cur_token.toString() );System.out.println("[Reduce 12]");:}
+Variable ::= Type _id
+	   | _id _id
 ;
-Extra ::= _id _leftbracket {:System.out.print( cur_token.toString() );System.out.println("[Reduce 13]");:}
+Extra ::= _id _leftbracket
 ;
-Type ::= _int {:System.out.print( cur_token.toString() );System.out.println("[Reduce 14]");:}
-       | _double {:System.out.print( cur_token.toString() );System.out.println("[Reduce 15]");:}
-       | _boolean {:System.out.print( cur_token.toString() );System.out.println("[Reduce 16]");:}
-       | _string {:System.out.print( cur_token.toString() );System.out.println("[Reduce 17]");:}
-       | Type _leftbracket _rightbracket {:System.out.print( cur_token.toString() );System.out.println("[Reduce 18]");:}
-       | Extra _rightbracket {:System.out.print( cur_token.toString() );System.out.println("[Reduce 19]");:}
+Type ::= _int
+       | _double
+       | _boolean
+       | _string
+       | Type _leftbracket _rightbracket
+       | Extra _rightbracket
 ;
-FunctionDecl ::= Type _id _leftparen Formals _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 20]");:}
-	       | _id _id _leftparen Formals _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 21]");:}
-	       | _void _id _leftparen Formals _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 22]");:}
-	       | Type _id _leftparen _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 23]");:}
-	       | _id _id _leftparen _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 24]");:}
-	       | _void _id _leftparen _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 25]");:}
+FunctionDecl ::= Type _id _leftparen Formals _rightparen StmtBlock
+	       | _id _id _leftparen Formals _rightparen StmtBlock
+	       | _void _id _leftparen Formals _rightparen StmtBlock
+	       | Type _id _leftparen _rightparen StmtBlock
+	       | _id _id _leftparen _rightparen StmtBlock
+	       | _void _id _leftparen _rightparen StmtBlock
 ;
-Formals ::= Variable {:System.out.print( cur_token.toString() );System.out.println("[Reduce 26]");:}
-	  | Variable _comma Formals {:System.out.print( cur_token.toString() );System.out.println("[Reduce 27]");:}
+Formals ::= Variable
+	  | Variable _comma Formals
 ;
 ClassDecl ::= _class _id _leftbrace Field _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 28]");:}
 	    | _class _id _extends _id _leftbrace Field _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 29]");:}
@@ -186,7 +183,7 @@ ClassDecl ::= _class _id _leftbrace Field _rightbrace {:System.out.print( cur_to
 	    | _class _id _extends _id _implements IdListItem _leftbrace _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 38]");:}
 	    | _class _id _extends _id _implements _id _leftbrace _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 39]");:}
 ;
-IdListItem ::= _id _comma IdListItem {:System.out.print( cur_token.toString() );System.out.println("[Reduce 40]");:}
+IdListItem ::= _id _comma IdListItem
 ;
 Field ::= VariableDecl Field {:System.out.print( cur_token.toString() );System.out.println("[Reduce 41]");:}
 	| FunctionDecl Field {:System.out.print( cur_token.toString() );System.out.println("[Reduce 42]");:}
