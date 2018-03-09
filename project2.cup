@@ -13,7 +13,7 @@ parser code {:
 	ComplexSymbolFactory csf = new ComplexSymbolFactory();
 	ScannerBuffer buff = new ScannerBuffer( new Lexer( new BufferedReader( new InputStreamReader( System.in ) ), csf ) );
 	Parser p = new Parser( buff, csf );
-	p.parse();
+	p.debug_parse();
     }
 
 :}
@@ -243,7 +243,7 @@ Expr ::= Lvalue _assignop Expr{:System.out.println("Expr ::= Lvalue _assignop Ex
        | _id _assignop Expr{:System.out.println("| _id _assignop Exp");:}
        | Constant{:System.out.println("| Constan");:}
        | Lvalue{:System.out.println("| Lvalu");:}
-       | _id{:System.out.println("| _i");:}
+       | _id{:System.out.println("| _id");:}
        | Call{:System.out.println("| Cal");:}
        | _leftparen Expr _rightparen{:System.out.println("| _leftparen Expr _rightpare");:}
        | Expr _plus Expr{:System.out.println("| Expr _plus Exp");:}

@@ -11,8 +11,8 @@ double division( double num1, double num2 ) {
 void main() {
 	string password;
 	password = "password";
-	println( "Hello there! What is the password?" );
-	string userResponse;
+	println ( "Hello there! What is the password?" );
+	//string userResponse;
 	userResponse = readln();
 	if( userResponse == password ) {
 		boolean BOOLEAN;
