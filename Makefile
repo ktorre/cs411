@@ -42,7 +42,7 @@ $(PROJECT2NAME).class : $(PARSERNAME).class
 	
 run :
 	@make --no-print-directory
-	@echo Running $(PROJECT1NAME)...
+	@echo Running $(PARSERNAME)...
 	@echo
 	@java -cp $(CUPPATH):. $(PARSERNAME)
 
