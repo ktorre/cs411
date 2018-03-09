@@ -720,11 +720,11 @@ public abstract class lr_parser {
 	      }
 
 	      if(lhs_sym_num == 0) {
-		System.out.println("[Reduce 0]\n[Accept]");
+		System.out.println("[Reduce " + (-act) + "]\n[Accept]");
 		done_parsing();
 	      }
 	      else {
-	      	System.out.print("[Reduce " + lhs_sym_num + "]");
+	      	System.out.print("[Reduce " + ((-act)-1) + "]");
 	      	numReduce++;
 	      }
 
@@ -734,7 +734,7 @@ public abstract class lr_parser {
 		  stack.pop();
 		  tos--;
 		}
-	      
+
 	      /* look up the state to go to from the one popped back to */
 	      act = get_reduce(((Symbol)stack.peek()).parse_state, lhs_sym_num);
 
