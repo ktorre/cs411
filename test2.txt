@@ -12,11 +12,11 @@ void main() {
 	string password;
 	password = "password";
 	println( "Hello there! What is the password?" );
-	string userResponse;
+	//string userResponse;
 	userResponse = readln();
 	if( userResponse == password ) {
 		boolean BOOLEAN;
-		BOOLEAN = false;
+		//BOOLEAN = false;
 		int number;
 		number = 0;
 		
