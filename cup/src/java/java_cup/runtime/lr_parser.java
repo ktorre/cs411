@@ -719,8 +719,14 @@ public abstract class lr_parser {
 	      	reducedAlready = true;
 	      }
 
-	      System.out.print("[Reduce " + lhs_sym_num + "]");
-	      numReduce++;
+	      if(lhs_sym_num == 0) {
+		System.out.println("[Reduce 0]\n[Accept]");
+		done_parsing();
+	      }
+	      else {
+	      	System.out.print("[Reduce " + lhs_sym_num + "]");
+	      	numReduce++;
+	      }
 
 	      /* pop the handle off the stack */
 	      for (int i = 0; i < handle_size; i++)

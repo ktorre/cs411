@@ -1,29 +1,31 @@
 void f (double x, double y) { }
 
-int i = 1;
+//int i = 1;
 
-result = 5.times(4);
+//result = 5.times(4);
 
-front = in.nextLine();
+//front = in.nextLine();
 
-front = in.nextLine;
+//front = in.nextLine;
 
-int[][][] super;
+//int[][][] super;
 
-a[3][4.5][b] = result = x + y + z;
+//a[3][4.5][b] = result = x + y + z;
 
-for( ; ; ) x = 1;
+//for( ; ; ) x = 1;
 
+/*
 int func(){
 	if(h > w) g=h;
 	else h=g;
 	double a;
 }
-
+*/
+/*
 class c {
 	if(h > w) g=h;
 	else h=g;
 	double a;
 }
-
+*/
 
