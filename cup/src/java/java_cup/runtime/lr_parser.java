@@ -169,6 +169,7 @@ public abstract class lr_parser {
    *  it recovered from. 
    */
   protected final static int _error_sync_size = 3;
+  protected boolean running = false;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -692,16 +693,20 @@ public abstract class lr_parser {
 	      cur_token.parse_state = act-1;
 	      cur_token.used_by_parser = true;
 	      stack.push(cur_token);
-	      if(!reducedAlready)
-	      	System.out.println( cur_token +  " [shift]" );
-	      else
-		System.out.println( "[shift]" );
+	      if ( running ) {
+		  if(!reducedAlready)
+		    System.out.println( cur_token +  " [shift]" );
+		  else
+		    System.out.println( "[shift]" );
+	      }
 	      tos++;
 
 	      /* advance to the next Symbol */
 	      cur_token = scan();
-	      numReduce = 0;
-	      reducedAlready = false;
+	      if ( running ) {
+		  numReduce = 0;
+		  reducedAlready = false;
+	      }
 	    }
 	  /* if its less than zero, then it encodes a reduce action */
 	  else if (act < 0)
@@ -713,18 +718,24 @@ public abstract class lr_parser {
 	      lhs_sym_num = production_tab[(-act)-1][0];
 	      handle_size = production_tab[(-act)-1][1];
 
-	      if(numReduce == 0)
-	      {
-		System.out.print(cur_token + " ");
-	      	reducedAlready = true;
+	      if ( running ) {
+		  if(numReduce == 0)
+		  {
+		    System.out.print(cur_token + " ");
+		    reducedAlready = true;
+		  }
 	      }
 
 	      if(lhs_sym_num == 0) {
-		System.out.println("[Reduce " + (-act) + "]\n[Accept]");
+		  if ( running ) {
+		    System.out.println("[Reduce " + (-act) + "]\n[Accept]");
+		  }
 		done_parsing();
 	      }
 	      else {
-	      	System.out.print("[Reduce " + ((-act)-1) + "]");
+		  if ( running ) {
+		    System.out.print("[Reduce " + ((-act)-1) + "]");
+		  }
 	      	numReduce++;
 	      }
 

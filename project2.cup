@@ -15,14 +15,14 @@ parser code {:
 	try{
 		p.parse();
 	}catch(Exception e){
-		//System.out.println("[Reject]");
+	    System.out.println("[Reject]");
 	}
     }
 
 :}
 
 /* define how to connect to the scanner! */
-//init with {: s.init(); :};
+init with {: running = true; :};
 //scan with {: return s.next_token(); :};
 
 /* Terminals (tokens returned by the scanner). */
