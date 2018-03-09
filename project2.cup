@@ -131,7 +131,10 @@ precedence left _leftbrace,
 		_period;
 
 /* The grammar rules */
-Program ::= Decl {:System.out.println("Program ::= Decl");:}
+Program ::= Decl {:
+	System.out.println("Reduce 1");
+	System.out.println( cur_token );
+    :}
 ;
 Decl ::= VariableDecl Decl {:System.out.println("Decl ::= VariableDecl Decl");:}
        | FunctionDecl Decl {:System.out.println("Decl ::= FunctionDecl Decl");:}
