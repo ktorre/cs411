@@ -169,17 +169,14 @@ Formals ::= Variable
 ClassDecl ::= _class _id _leftbrace Field _rightbrace
 	    | _class _id _extends _id _leftbrace Field _rightbrace
 	    | _class _id _implements IdListItem _leftbrace Field _rightbrace
-	    | _class _id _implements _id _leftbrace Field _rightbrace
 	    | _class _id _extends _id _implements IdListItem _leftbrace Field _rightbrace
-	    | _class _id _extends _id _implements _id _leftbrace Field _rightbrace
 	    | _class _id _leftbrace _rightbrace
 	    | _class _id _extends _id _leftbrace _rightbrace
 	    | _class _id _implements IdListItem _leftbrace _rightbrace
-	    | _class _id _implements _id _leftbrace _rightbrace
 	    | _class _id _extends _id _implements IdListItem _leftbrace _rightbrace
-	    | _class _id _extends _id _implements _id _leftbrace _rightbrace
 ;
-IdListItem ::= _id _comma IdListItem
+IdListItem ::= _id
+	     | _id _comma IdListItem
 ;
 Field ::= VariableDecl Field
 	| FunctionDecl Field
@@ -241,7 +238,7 @@ ExprListItem ::= Expr _comma ExprListItem
 	       | Expr
 ;
 Expr ::= Lvalue _assignop Expr
-       | _id _assignop Expr
+       | _id _assignop
        | Constant
        | Lvalue
        | _id
@@ -266,9 +263,8 @@ Expr ::= Lvalue _assignop Expr
        | _newarray _leftparen _intconstant _comma Type _rightparen
        | _newarray _leftparen _intconstant _comma _id _rightparen
 ;
-Lvalue ::= Lvalue _leftbracket Expr _rightbracket
+Lvalue ::=  Lvalue _leftbracket Expr _rightbracket
 	 | Lvalue _period _id
-	 | Extra Expr _rightbracket
 ;
 Call ::= _id _leftparen Actuals _rightparen
        | _id _period _id _leftparen Actuals _rightparen
