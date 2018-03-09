@@ -596,7 +596,7 @@ class Lexer  implements java_cup.runtime.Scanner {
 					case -24:
 						break;
 					case 24:
-						{ System.out.println( "" ); }
+						{ }
 					case -25:
 						break;
 					case 25:

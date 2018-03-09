@@ -83,7 +83,7 @@ COMMENT_TEXT=([^/*\n]|[^*\n]"/"[^*\n]|[^/\n]"*"[^/\n]|"*"[^/\n]|"/"[^*\n])*
 <YYINITIAL> "/*"({COMMENT_TEXT}|\n)*"*/"{WHITE_SPACE_CHAR}*\n {}
 
 <YYINITIAL> ^\n {}
-<YYINITIAL> {WHITE_SPACE_CHAR}*\n { System.out.println( "" ); }
+<YYINITIAL> {WHITE_SPACE_CHAR}*\n { }
 <YYINITIAL> {NONNEWLINE_WHITE_SPACE_CHAR}+ {}
 
 <YYINITIAL> . {

@@ -16,7 +16,7 @@ parser code {:
 	try{
 		p.parse();
 	}catch(Exception e){
-		System.out.println("[Reject]");
+		//System.out.println("[Reject]");
 	}
     }
 

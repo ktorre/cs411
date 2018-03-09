@@ -407,7 +407,7 @@ public abstract class lr_parser {
     {
       if (info instanceof ComplexSymbol){
     	  ComplexSymbol cs = (ComplexSymbol)info;
-    	  System.err.println(message+" for input symbol \""+cs.getName()+"\" spanning from "+cs.getLeft() +" to "+cs.getRight());
+    	  //System.err.println(message+" for input symbol \""+cs.getName()+"\" spanning from "+cs.getLeft() +" to "+cs.getRight());
     	  return;
       }
 
@@ -415,7 +415,9 @@ public abstract class lr_parser {
       System.err.flush();
       if (info instanceof Symbol)
     	  if (((Symbol)info).left != -1)
-    		  System.err.println(" at character " + ((Symbol)info).left + " of input");
+	  {
+    		  //System.err.println(" at character " + ((Symbol)info).left + " of input");
+	  }
       else System.err.println("");
     }
 
@@ -429,7 +431,7 @@ public abstract class lr_parser {
    */
   public void syntax_error(Symbol cur_token)
     {
-      report_error("Syntax error", cur_token);
+      //report_error("Syntax error", cur_token);
       report_expected_token_ids();
     }
   /**
@@ -445,7 +447,7 @@ public abstract class lr_parser {
 	  for (Integer expected : ids){
 		  list.add(symbl_name_from_id(expected));
 	  }
-	  System.out.println("instead expected token classes are "+list);
+	  //System.out.println("instead expected token classes are "+list);
   }
   /**
    * Translates numerical symbol ids to the (non)terminal names from the spec
@@ -536,7 +538,7 @@ public abstract class lr_parser {
   public void unrecovered_syntax_error(Symbol cur_token)
     throws java.lang.Exception
     {
-      report_fatal_error("Couldn't repair and continue parse", cur_token);
+      //report_fatal_error("Couldn't repair and continue parse", cur_token);
     }
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
@@ -691,7 +693,7 @@ public abstract class lr_parser {
 	      cur_token.used_by_parser = true;
 	      stack.push(cur_token);
 	      if(!reducedAlready)
-	      	System.out.println( cur_token +  "[shift]" );
+	      	System.out.println( cur_token +  " [shift]" );
 	      else
 		System.out.println( "[shift]" );
 	      tos++;
@@ -713,7 +715,7 @@ public abstract class lr_parser {
 
 	      if(numReduce == 0)
 	      {
-		System.out.print(cur_token);
+		System.out.print(cur_token + " ");
 	      	reducedAlready = true;
 	      }
 
@@ -740,19 +742,20 @@ public abstract class lr_parser {
 	  else if (act == 0)
 	    {
 	      /* call user syntax error reporting routine */
-	      syntax_error(cur_token);
+	      //syntax_error(cur_token);
 
 	      /* try to error recover */
-	      if (!error_recovery(false))
-		{
+	      //if (!error_recovery(false))
+		//{
 		  /* if that fails give up with a fatal syntax error */
-		  unrecovered_syntax_error(cur_token);
+		  //unrecovered_syntax_error(cur_token);
 
 		  /* just in case that wasn't fatal enough, end parse */
 		  done_parsing();
-		} else {
-		  lhs_sym = (Symbol)stack.peek();
-		}
+		//} else {
+		  //lhs_sym = (Symbol)stack.peek();
+		//}
+		System.out.println("[reject]");
 	    }
 	}
       return lhs_sym;
