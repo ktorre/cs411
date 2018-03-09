@@ -173,111 +173,111 @@ ClassDecl ::= _class _id _leftbrace Field _rightbrace {:System.out.println("Clas
 	    | _class _id _extends _id _implements _id _leftbrace Field _rightbrace {:System.out.println("ClassDecl ::= _class _id _extends _id _implements _id _leftbrace Field _rightbrace");:}
 	    | _class _id _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _leftbrace _rightbrace");:}
 	    | _class _id _extends _id _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _extends _id _leftbrace _rightbrace");:}
-	    | _class _id _implements IdListItem _leftbrace _rightbrace {:System.out.println("Class _class _id _implements IdListItem _leftbrace _rightbrace");:}
-	    | _class _id _implements _id _leftbrace _rightbrace {:System.out.println("| _class _id _implements _id _leftbrace _rightbrace");:}
-	    | _class _id _extends _id _implements IdListItem _leftbrace _rightbrace {:System.out.println("| _class _id _extends _id _implements IdListItem _leftbrace _rightbrace");:}
-	    | _class _id _extends _id _implements _id _leftbrace _rightbrace {:System.out.println("| _class _id _extends _id _implements _id _leftbrace _rightbrace");:}
+	    | _class _id _implements IdListItem _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _implements IdListItem _leftbrace _rightbrace");:}
+	    | _class _id _implements _id _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _implements _id _leftbrace _rightbrace");:}
+	    | _class _id _extends _id _implements IdListItem _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _extends _id _implements IdListItem _leftbrace _rightbrace");:}
+	    | _class _id _extends _id _implements _id _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _extends _id _implements _id _leftbrace _rightbrace");:}
 ;
 IdListItem ::= _id _comma IdListItem {:System.out.println("IdListItem ::= _id _comma IdListItem");:}
 ;
 Field ::= VariableDecl Field {:System.out.println("Field ::= VariableDecl Field");:}
-	| FunctionDecl Field {:System.out.println("| FunctionDecl Field");:}
-	| VariableDecl {:System.out.println("| VariableDecl");:}
-	| FunctionDecl {:System.out.println("| FunctionDecl");:}
+	| FunctionDecl Field {:System.out.println("Field ::=  FunctionDecl Field");:}
+	| VariableDecl {:System.out.println("Field ::= VariableDecl");:}
+	| FunctionDecl {:System.out.println("Field ::= FunctionDecl");:}
 ;
 InterfaceDecl ::= _interface _id _leftbrace MultiplePrototype _rightbrace {:System.out.println("InterfaceDecl ::= _interface _id _leftbrace MultiplePrototype _rightbrace");:}
-		| _interface _id _leftbrace _rightbrace {:System.out.println("| _interface _id _leftbrace _rightbrace");:}
+		| _interface _id _leftbrace _rightbrace {:System.out.println("InterfaceDecl ::= _interface _id _leftbrace _rightbrace");:}
 ;
 MultiplePrototype ::= MultiplePrototype Prototype {:System.out.println("MultiplePrototype ::= MultiplePrototype Prototype");:}
-		    | Prototype {:System.out.println("| Prototype");:}
+		    | Prototype {:System.out.println("MultiplePrototype ::= Prototype");:}
 ;
 Prototype ::= Type _id _leftparen Formals _rightparen _semicolon {:System.out.println("Prototype ::= Type _id _leftparen Formals _rightparen _semicolon");:}
-	    | _id _id _leftparen Formals _rightparen _semicolon {:System.out.println("| _id _id _leftparen Formals _rightparen _semicolon");:}
-	    | _void _id _leftparen Formals _rightparen _semicolon {:System.out.println("| _void _id _leftparen Formals _rightparen _semicolon");:}
-	    | Type _id _leftparen _rightparen _semicolon {:System.out.println("| Type _id _leftparen _rightparen _semicolon");:}
-	    | _id _id _leftparen _rightparen _semicolon {:System.out.println("| _id _id _leftparen _rightparen _semicolon");:}
-	    | _void _id _leftparen _rightparen _semicolon {:System.out.println("| _void _id _leftparen _rightparen _semicolon");:}
+	    | _id _id _leftparen Formals _rightparen _semicolon {:System.out.println("Prototype ::= _id _id _leftparen Formals _rightparen _semicolon");:}
+	    | _void _id _leftparen Formals _rightparen _semicolon {:System.out.println("Prototype ::= _void _id _leftparen Formals _rightparen _semicolon");:}
+	    | Type _id _leftparen _rightparen _semicolon {:System.out.println("Prototype ::= Type _id _leftparen _rightparen _semicolon");:}
+	    | _id _id _leftparen _rightparen _semicolon {:System.out.println("Prototype ::= _id _id _leftparen _rightparen _semicolon");:}
+	    | _void _id _leftparen _rightparen _semicolon {:System.out.println("Prototype ::= _void _id _leftparen _rightparen _semicolon");:}
 ;
 StmtBlock ::= _leftbrace MultipleVariableDecl MultipleStmt _rightbrace {:System.out.println("StmtBlock ::= _leftbrace MultipleVariableDecl MultipleStmt _rightbrace");:}
-	    | _leftbrace MultipleVariableDecl _rightbrace {:System.out.println("| _leftbrace MultipleVariableDecl _rightbrace");:}
-	    | _leftbrace MultipleStmt _rightbrace {:System.out.println("| _leftbrace MultipleStmt _rightbrace");:}
-	    | _leftbrace _rightbrace {:System.out.println("| _leftbrace _rightbrace");:}
+	    | _leftbrace MultipleVariableDecl _rightbrace {:System.out.println("StmtBlock ::= _leftbrace MultipleVariableDecl _rightbrace");:}
+	    | _leftbrace MultipleStmt _rightbrace {:System.out.println("StmtBlock ::= _leftbrace MultipleStmt _rightbrace");:}
+	    | _leftbrace _rightbrace {:System.out.println("StmtBlock ::= _leftbrace _rightbrace");:}
 ;
 MultipleVariableDecl ::= MultipleVariableDecl VariableDecl {:System.out.println("MultipleVariableDecl ::= MultipleVariableDecl VariableDecl");:}
-		       | VariableDecl {:System.out.println("| VariableDecl");:}
+		       | VariableDecl {:System.out.println("MultipleVariableDecl ::= VariableDecl");:}
 ;
 MultipleStmt ::= MultipleStmt Stmt {:System.out.println("MultipleStmt ::= MultipleStmt Stmt");:}
-	       | Stmt {:System.out.println("| Stmt");:}
+	       | Stmt {:System.out.println("MultipleStmt ::= Stmt");:}
 ;
 Stmt ::= _semicolon {:System.out.println("Stmt ::= _semicolon");:}
-       | Expr _semicolon {:System.out.println("| Expr _semicolon");:}
-       | IfStmt {:System.out.println("| IfStmt");:}
-       | WhileStmt {:System.out.println("| WhileStmt");:}
-       | ForStmt {:System.out.println("| ForStmt");:}
-       | BreakStmt {:System.out.println("| BreakStmt");:}
-       | ReturnStmt {:System.out.println("| ReturnStmt");:}
-       | PrintStmt {:System.out.println("| PrintStmt");:}
-       | StmtBlock {:System.out.println("| StmtBlock");:}
+       | Expr _semicolon {:System.out.println("Stmt ::= Expr _semicolon");:}
+       | IfStmt {:System.out.println("Stmt ::= IfStmt");:}
+       | WhileStmt {:System.out.println("Stmt ::= WhileStmt");:}
+       | ForStmt {:System.out.println("Stmt ::= ForStmt");:}
+       | BreakStmt {:System.out.println("Stmt ::= BreakStmt");:}
+       | ReturnStmt {:System.out.println("Stmt ::= ReturnStmt");:}
+       | PrintStmt {:System.out.println("Stmt ::= PrintStmt");:}
+       | StmtBlock {:System.out.println("Stmt ::= StmtBlock");:}
 ;
 IfStmt ::= _if _leftparen Expr _rightparen Stmt %prec _no_else 
-	 | _if _leftparen Expr _rightparen Stmt _else Stmt {:System.out.println("| _if _leftparen Expr _rightparen Stmt _else Stmt");:}
+	 | _if _leftparen Expr _rightparen Stmt _else Stmt {:System.out.println("IfStmt ::= _if _leftparen Expr _rightparen Stmt _else Stmt");:}
 ;
 WhileStmt ::= _while _leftparen Expr _rightparen Stmt{:System.out.println("WhileStmt ::= _while _leftparen Expr _rightparen Stm");:}
 ;
 ForStmt ::= _for _leftparen _semicolon Expr _semicolon _rightparen Stmt{:System.out.println("ForStmt ::= _for _leftparen _semicolon Expr _semicolon _rightparen Stm");:}
-	  | _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stmt{:System.out.println("| _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stm");:}
-	  | _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stmt{:System.out.println("| _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stm");:}
-	  | _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stmt{:System.out.println("| _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stm");:}
+	  | _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stmt{:System.out.println("ForStmt ::= _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stm");:}
+	  | _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stmt{:System.out.println("ForStmt ::= _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stm");:}
+	  | _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stmt{:System.out.println("ForStmt ::= _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stm");:}
 ;
 BreakStmt ::= _break _semicolon{:System.out.println("BreakStmt ::= _break _semicolo");:}
 ;
 ReturnStmt ::= _return _semicolon{:System.out.println("ReturnStmt ::= _return _semicolo");:}
-	     | _return Expr _semicolon{:System.out.println("| _return Expr _semicolo");:}
+	     | _return Expr _semicolon{:System.out.println("ReturnStmt ::= _return Expr _semicolo");:}
 ;
 PrintStmt ::= _println _leftparen ExprListItem _rightparen _semicolon{:System.out.println("PrintStmt ::= _println _leftparen ExprListItem _rightparen _semicolo");:}
 ;
 ExprListItem ::= Expr _comma ExprListItem{:System.out.println("ExprListItem ::= Expr _comma ExprListIte");:}
-	       | Expr{:System.out.println("| Exp");:}
+	       | Expr{:System.out.println("ExprListItem ::= Exp");:}
 ;
 Expr ::= Lvalue _assignop Expr{:System.out.println("Expr ::= Lvalue _assignop Expr");:}
-       | _id _assignop Expr{:System.out.println("| _id _assignop Expr");:}
-       | Constant{:System.out.println("| Constant");:}
-       | Lvalue{:System.out.println("| Lvalue");:}
-       | _id{:System.out.println("| _id");:}
-       | Call{:System.out.println("| Call");:}
-       | _leftparen Expr _rightparen{:System.out.println("| _leftparen Expr _rightparen");:}
-       | Expr _plus Expr{:System.out.println("| Expr _plus Expr");:}
-       | Expr _minus Expr{:System.out.println("| Expr _minus Expr");:}
-       | Expr _multiplication Expr{:System.out.println("| Expr _multiplication Expr");:}
-       | Expr _division Expr{:System.out.println("| Expr _division Expr");:}
-       | Expr _mod Expr{:System.out.println("| Expr _mod Expr");:}
+       | _id _assignop Expr{:System.out.println("Expr ::= _id _assignop Expr");:}
+       | Constant{:System.out.println("Expr ::= Constant");:}
+       | Lvalue{:System.out.println("Expr ::= Lvalue");:}
+       | _id{:System.out.println("Expr ::= _id");:}
+       | Call{:System.out.println("Expr ::= Call");:}
+       | _leftparen Expr _rightparen{:System.out.println("Expr ::= _leftparen Expr _rightparen");:}
+       | Expr _plus Expr{:System.out.println("Expr ::= Expr _plus Expr");:}
+       | Expr _minus Expr{:System.out.println("Expr ::= Expr _minus Expr");:}
+       | Expr _multiplication Expr{:System.out.println("Expr ::= Expr _multiplication Expr");:}
+       | Expr _division Expr{:System.out.println("Expr ::= Expr _division Expr");:}
+       | Expr _mod Expr{:System.out.println("Expr ::= Expr _mod Expr");:}
        | _minus Expr %prec _uminus
-       | Expr _less Expr{:System.out.println("| Expr _less Expr");:}
-       | Expr _lessequal Expr{:System.out.println("| Expr _lessequal Expr");:}
-       | Expr _greater Expr{:System.out.println("| Expr _greater Expr");:}
-       | Expr _greaterequal Expr{:System.out.println("| Expr _greaterequal Expr");:}
-       | Expr _equal Expr{:System.out.println("| Expr _equal Expr");:}
-       | Expr _notequal Expr{:System.out.println("| Expr _notequal Expr");:}
-       | Expr _and Expr{:System.out.println("| Expr _and Expr");:}
-       | Expr _or Expr{:System.out.println("| Expr _or Expr");:}
-       | _not Expr{:System.out.println("| _not Expr");:}
-       | _readln _leftparen _rightparen{:System.out.println("| _readln _leftparen _rightparen");:}
-       | _newarray _leftparen _intconstant _comma Type _rightparen{:System.out.println("| _newarray _leftparen _intconstant _comma Type _rightparen");:}
-       | _newarray _leftparen _intconstant _comma _id _rightparen{:System.out.println("| _newarray _leftparen _intconstant _comma _id _rightparen");:}
+       | Expr _less Expr{:System.out.println("Expr ::= Expr _less Expr");:}
+       | Expr _lessequal Expr{:System.out.println("Expr ::= Expr _lessequal Expr");:}
+       | Expr _greater Expr{:System.out.println("Expr ::= Expr _greater Expr");:}
+       | Expr _greaterequal Expr{:System.out.println("Expr ::= Expr _greaterequal Expr");:}
+       | Expr _equal Expr{:System.out.println("Expr ::= Expr _equal Expr");:}
+       | Expr _notequal Expr{:System.out.println("Expr ::= Expr _notequal Expr");:}
+       | Expr _and Expr{:System.out.println("Expr ::= Expr _and Expr");:}
+       | Expr _or Expr{:System.out.println("Expr ::= Expr _or Expr");:}
+       | _not Expr{:System.out.println("Expr ::= _not Expr");:}
+       | _readln _leftparen _rightparen{:System.out.println("Expr ::= _readln _leftparen _rightparen");:}
+       | _newarray _leftparen _intconstant _comma Type _rightparen{:System.out.println("Expr ::= _newarray _leftparen _intconstant _comma Type _rightparen");:}
+       | _newarray _leftparen _intconstant _comma _id _rightparen{:System.out.println("Expr ::= _newarray _leftparen _intconstant _comma _id _rightparen");:}
 ;
 Lvalue ::= Lvalue _leftbracket Expr _rightbracket{:System.out.println("Lvalue ::= Lvalue _leftbracket Expr _rightbracket");:}
-	 | Lvalue _period _id{:System.out.println("| Lvalue _period _id");:}
-	 | Extra Expr _rightbracket{:System.out.println("| Extra Expr _rightbracket");:}
+	 | Lvalue _period _id{:System.out.println("Lvalue ::= Lvalue _period _id");:}
+	 | Extra Expr _rightbracket{:System.out.println("Lvalue ::= Extra Expr _rightbracket");:}
 ;
 Call ::= _id _leftparen Actuals _rightparen{:System.out.println("Call ::= _id _leftparen Actuals _rightparen");:}
-       | _id _period _id _leftparen Actuals _rightparen{:System.out.println("| _id _period _id _leftparen Actuals _rightparen");:}
-       | _id _leftparen _rightparen{:System.out.println("| _id _leftparen _rightparen");:}
-       | _id _period _id _leftparen _rightparen{:System.out.println("| _id _period _id _leftparen _rightparen");:}
+       | _id _period _id _leftparen Actuals _rightparen{:System.out.println("Call ::= _id _period _id _leftparen Actuals _rightparen");:}
+       | _id _leftparen _rightparen{:System.out.println("Call ::= _id _leftparen _rightparen");:}
+       | _id _period _id _leftparen _rightparen{:System.out.println("Call ::= _id _period _id _leftparen _rightparen");:}
 ;
 Actuals ::= ExprListItem{:System.out.println("Actuals ::= ExprListItem");:}
 ;
 Constant ::= _intconstant {:System.out.println("Constant ::= _intconstant");:}
-	   | _doubleconstant{:System.out.println("| _doubleconstant");:}
-	   | _stringconstant{:System.out.println("| _stringconstant");:}
-	   | _booleanconstant{:System.out.println("| _booleanconstant");:}
+	   | _doubleconstant{:System.out.println("Constant ::= _doubleconstant");:}
+	   | _stringconstant{:System.out.println("Constant ::= _stringconstant");:}
+	   | _booleanconstant{:System.out.println("Constant ::= _booleanconstant");:}
 ;
