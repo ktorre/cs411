@@ -32,7 +32,7 @@ $(PARSERNAME).class : $(PROJECT2NAME).cup
 
 sym.class : $(PROJECT2NAME).cup
 	@echo Generating parser file...
-	@java -cp $(CUPPATH):. java_cup.Main -parser $(PARSERNAME) $(PROJECT2NAME).cup
+	@java -cp $(CUPPATH):. java_cup.Main -interface  -parser $(PARSERNAME) $(PROJECT2NAME).cup
 	@javac sym.java
 
 $(PROJECT2NAME).class : $(PARSERNAME).class

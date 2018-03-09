@@ -159,7 +159,7 @@ public class ComplexSymbolFactory implements SymbolFactory{
             this.name=name;
         }
         public String toString(){
-            if (xleft==null || xright==null) return "Symbol: "+name;
+            if (xleft==null || xright==null) return name;
             return "Symbol: "+name+" ("+xleft+" - "+xright+")";
         }
         public String getName(){
