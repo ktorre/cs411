@@ -9,17 +9,19 @@ double division( double num1, double num2 ) {
 
 //Here is the main method and an example of a single line comment
 void main() {
-	string password = "password";
+	string password;
+	password = "password";
 	println( "Hello there! What is the password?" );
 	string userResponse;
 	userResponse = readln();
 	if( userResponse == password ) {
 		boolean BOOLEAN;
 		BOOLEAN = false;
-		int number = 0;
+		int number;
+		number = 0;
 		
 		while( !BOOLEAN ) {
-			number = number + 1;
+			number = 1;
 			if ( number < 10) {
 				number = number * 02;
 			}
