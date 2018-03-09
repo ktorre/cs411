@@ -103,7 +103,8 @@ non terminal	    Program,
 		    Call,
 		    Actuals,
 		    Constant,
-		    Extra;
+		    Extra,
+		    IDperiodID;
 
 /* Precedences */
 precedence nonassoc _no_else;
@@ -267,12 +268,15 @@ Expr ::= Lvalue _assignop Expr{:System.out.println("Expr ::= Lvalue _assignop Ex
 ;
 Lvalue ::= Lvalue _leftbracket Expr _rightbracket{:System.out.println("Lvalue ::= Lvalue _leftbracket Expr _rightbracket");:}
 	 | Lvalue _period _id{:System.out.println("Lvalue ::= Lvalue _period _id");:}
+	 | IDperiodID
 	 | Extra Expr _rightbracket{:System.out.println("Lvalue ::= Extra Expr _rightbracket");:}
 ;
+IDperiodID ::= _id _period _id
+;
 Call ::= _id _leftparen Actuals _rightparen{:System.out.println("Call ::= _id _leftparen Actuals _rightparen");:}
-       | _id _period _id _leftparen Actuals _rightparen{:System.out.println("Call ::= _id _period _id _leftparen Actuals _rightparen");:}
+       | IDperiodID _leftparen Actuals _rightparen{:System.out.println("Call ::= _id _period _id _leftparen Actuals _rightparen");:}
        | _id _leftparen _rightparen{:System.out.println("Call ::= _id _leftparen _rightparen");:}
-       | _id _period _id _leftparen _rightparen{:System.out.println("Call ::= _id _period _id _leftparen _rightparen");:}
+       | IDperiodID _leftparen _rightparen{:System.out.println("Call ::= _id _period _id _leftparen _rightparen");:}
 ;
 Actuals ::= ExprListItem{:System.out.println("Actuals ::= ExprListItem");:}
 ;
