@@ -13,7 +13,11 @@ parser code {:
 	ComplexSymbolFactory csf = new ComplexSymbolFactory();
 	ScannerBuffer buff = new ScannerBuffer( new Lexer( new BufferedReader( new InputStreamReader( System.in ) ), csf ) );
 	Parser p = new Parser( buff, csf );
-	p.parse();
+	try{
+		p.parse();
+	}catch(Exception e){
+		System.out.println("[Reject]");
+	}
     }
 
 :}
@@ -131,157 +135,157 @@ precedence left _leftbrace,
 		_period;
 
 /* The grammar rules */
-Program ::= Decl {:System.out.println("Program ::= Decl");:}
+Program ::= Decl {:System.out.println("[Reduce 1]");:}
 ;
-Decl ::= VariableDecl Decl {:System.out.println("Decl ::= VariableDecl Decl");:}
-       | FunctionDecl Decl {:System.out.println("Decl ::= FunctionDecl Decl");:}
-       | ClassDecl Decl {:System.out.println("Decl ::= ClassDecl Decl");:}
-       | InterfaceDecl Decl {:System.out.println("Decl ::= InnerfaceDecl Decl");:}
-       | VariableDecl {:System.out.println("Decl ::= VariableDecl");:}
-       | FunctionDecl {:System.out.println("Decl ::= FunctionDecl");:}
-       | ClassDecl {:System.out.println("Decl ::=  ClassDecl");:}
-       | InterfaceDecl {:System.out.println("Decl ::= InterfaceDecl");:}
+Decl ::= VariableDecl Decl {:System.out.println("[Reduce 2]");:}
+       | FunctionDecl Decl {:System.out.println("[Reduce 3]");:}
+       | ClassDecl Decl {:System.out.println("[Reduce 4]");:}
+       | InterfaceDecl Decl {:System.out.println("[Reduce 5]");:}
+       | VariableDecl {:System.out.println("[Reduce 6]");:}
+       | FunctionDecl {:System.out.println("[Reduce 7]");:}
+       | ClassDecl {:System.out.println("[Reduce 8]");:}
+       | InterfaceDecl {:System.out.println("[Reduce 9]");:}
 ;
-VariableDecl ::= Variable _semicolon {:System.out.println("VariableDecl ::= Variable _semicolon");:}
+VariableDecl ::= Variable _semicolon {:System.out.println("[Reduce 10]");:}
 ;
-Variable ::= Type _id {:System.out.println("Variable ::= Type _id");:}
-	   | _id _id {:System.out.println("Variable ::= _id _id");:}
+Variable ::= Type _id {:System.out.println("[Reduce 11]");:}
+	   | _id _id {:System.out.println("[Reduce 12]");:}
 ;
-Extra ::= _id _leftbracket {:System.out.println("Extra ::= _id _leftbracket");:}
+Extra ::= _id _leftbracket {:System.out.println("[Reduce 13]");:}
 ;
-Type ::= _int {:System.out.println("Type ::= _int");:}
-       | _double {:System.out.println("Type ::= _double");:}
-       | _boolean {:System.out.println("Type ::= _boolean");:}
-       | _string {:System.out.println("Type ::= _string");:}
-       | Type _leftbracket _rightbracket {:System.out.println("Type ::= Type _leftbracket _rightbracket");:}
-       | Extra _rightbracket {:System.out.println("Type ::= Extra _rightbracket");:}
+Type ::= _int {:System.out.println("[Reduce 14]");:}
+       | _double {:System.out.println("[Reduce 15]");:}
+       | _boolean {:System.out.println("[Reduce 16]");:}
+       | _string {:System.out.println("[Reduce 17]");:}
+       | Type _leftbracket _rightbracket {:System.out.println("[Reduce 18]");:}
+       | Extra _rightbracket {:System.out.println("[Reduce 19]");:}
 ;
-FunctionDecl ::= Type _id _leftparen Formals _rightparen StmtBlock {:System.out.println("FunctionDecl ::= Type _id _leftparen Formals _rightparen StmtBlock");:}
-	       | _id _id _leftparen Formals _rightparen StmtBlock {:System.out.println("FunctionDecl ::= _id _id _leftparen Formals _rightparen StmtBlock");:}
-	       | _void _id _leftparen Formals _rightparen StmtBlock {:System.out.println("FunctinoDecl ::= _void _id _leftparen Formals _rightparen StmtBlock");:}
-	       | Type _id _leftparen _rightparen StmtBlock {:System.out.println("FunctionDecl ::= Type _id _leftparen _rightparen StmtBlock");:}
-	       | _id _id _leftparen _rightparen StmtBlock {:System.out.println("FunctionDecl ::= _id _id _leftparen _rightparen StmtBlock");:}
-	       | _void _id _leftparen _rightparen StmtBlock {:System.out.println("FunctionDecl ::= _void _id _leftparen _rightparen StmtBlock");:}
+FunctionDecl ::= Type _id _leftparen Formals _rightparen StmtBlock {:System.out.println("[Reduce 20]");:}
+	       | _id _id _leftparen Formals _rightparen StmtBlock {:System.out.println("[Reduce 21]");:}
+	       | _void _id _leftparen Formals _rightparen StmtBlock {:System.out.println("[Reduce 22]");:}
+	       | Type _id _leftparen _rightparen StmtBlock {:System.out.println("[Reduce 23]");:}
+	       | _id _id _leftparen _rightparen StmtBlock {:System.out.println("[Reduce 24]");:}
+	       | _void _id _leftparen _rightparen StmtBlock {:System.out.println("[Reduce 25]");:}
 ;
-Formals ::= Variable {:System.out.println("Formals ::= Variable");:}
-	  | Variable _comma Formals {:System.out.println("Formals ::= Variable _comma Formals");:}
+Formals ::= Variable {:System.out.println("[Reduce 26]");:}
+	  | Variable _comma Formals {:System.out.println("[Reduce 27]");:}
 ;
-ClassDecl ::= _class _id _leftbrace Field _rightbrace {:System.out.println("ClassDecl ::= _class _id _leftbrace Field _rightbrace");:}
-	    | _class _id _extends _id _leftbrace Field _rightbrace {:System.out.println("ClassDecl ::= _class _id _extends _id _leftbrace Field _rightbrace");:}
-	    | _class _id _implements IdListItem _leftbrace Field _rightbrace {:System.out.println("ClassDecl ::= _class _id _implements IdListItem _leftbrace Field _rightbrace");:}
-	    | _class _id _implements _id _leftbrace Field _rightbrace {:System.out.println("ClassDecl ::= _class _id _implements _id _leftbrace Field _rightbrace");:}
-	    | _class _id _extends _id _implements IdListItem _leftbrace Field _rightbrace {:System.out.println("ClassDecl ::= _class _id _extends _id _implements IdListItem _leftbrace Field _rightbrace");:}
-	    | _class _id _extends _id _implements _id _leftbrace Field _rightbrace {:System.out.println("ClassDecl ::= _class _id _extends _id _implements _id _leftbrace Field _rightbrace");:}
-	    | _class _id _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _leftbrace _rightbrace");:}
-	    | _class _id _extends _id _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _extends _id _leftbrace _rightbrace");:}
-	    | _class _id _implements IdListItem _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _implements IdListItem _leftbrace _rightbrace");:}
-	    | _class _id _implements _id _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _implements _id _leftbrace _rightbrace");:}
-	    | _class _id _extends _id _implements IdListItem _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _extends _id _implements IdListItem _leftbrace _rightbrace");:}
-	    | _class _id _extends _id _implements _id _leftbrace _rightbrace {:System.out.println("ClassDecl ::= _class _id _extends _id _implements _id _leftbrace _rightbrace");:}
+ClassDecl ::= _class _id _leftbrace Field _rightbrace {:System.out.println("[Reduce 28]");:}
+	    | _class _id _extends _id _leftbrace Field _rightbrace {:System.out.println("[Reduce 29]");:}
+	    | _class _id _implements IdListItem _leftbrace Field _rightbrace {:System.out.println("[Reduce 30]");:}
+	    | _class _id _implements _id _leftbrace Field _rightbrace {:System.out.println("[Reduce 31]");:}
+	    | _class _id _extends _id _implements IdListItem _leftbrace Field _rightbrace {:System.out.println("[Reduce 32]");:}
+	    | _class _id _extends _id _implements _id _leftbrace Field _rightbrace {:System.out.println("[Reduce 33]");:}
+	    | _class _id _leftbrace _rightbrace {:System.out.println("[Reduce 34]");:}
+	    | _class _id _extends _id _leftbrace _rightbrace {:System.out.println("[Reduce 35]");:}
+	    | _class _id _implements IdListItem _leftbrace _rightbrace {:System.out.println("[Reduce 36]");:}
+	    | _class _id _implements _id _leftbrace _rightbrace {:System.out.println("[Reduce 37]");:}
+	    | _class _id _extends _id _implements IdListItem _leftbrace _rightbrace {:System.out.println("[Reduce 38]");:}
+	    | _class _id _extends _id _implements _id _leftbrace _rightbrace {:System.out.println("[Reduce 39]");:}
 ;
-IdListItem ::= _id _comma IdListItem {:System.out.println("IdListItem ::= _id _comma IdListItem");:}
+IdListItem ::= _id _comma IdListItem {:System.out.println("[Reduce 40]");:}
 ;
-Field ::= VariableDecl Field {:System.out.println("Field ::= VariableDecl Field");:}
-	| FunctionDecl Field {:System.out.println("Field ::=  FunctionDecl Field");:}
-	| VariableDecl {:System.out.println("Field ::= VariableDecl");:}
-	| FunctionDecl {:System.out.println("Field ::= FunctionDecl");:}
+Field ::= VariableDecl Field {:System.out.println("[Reduce 41]");:}
+	| FunctionDecl Field {:System.out.println("[Reduce 42]");:}
+	| VariableDecl {:System.out.println("[Reduce 43]");:}
+	| FunctionDecl {:System.out.println("[Reduce 44]");:}
 ;
-InterfaceDecl ::= _interface _id _leftbrace MultiplePrototype _rightbrace {:System.out.println("InterfaceDecl ::= _interface _id _leftbrace MultiplePrototype _rightbrace");:}
-		| _interface _id _leftbrace _rightbrace {:System.out.println("InterfaceDecl ::= _interface _id _leftbrace _rightbrace");:}
+InterfaceDecl ::= _interface _id _leftbrace MultiplePrototype _rightbrace {:System.out.println("[Reduce 45]");:}
+		| _interface _id _leftbrace _rightbrace {:System.out.println("[Reduce 46]");:}
 ;
-MultiplePrototype ::= MultiplePrototype Prototype {:System.out.println("MultiplePrototype ::= MultiplePrototype Prototype");:}
-		    | Prototype {:System.out.println("MultiplePrototype ::= Prototype");:}
+MultiplePrototype ::= MultiplePrototype Prototype {:System.out.println("[Reduce 47]");:}
+		    | Prototype {:System.out.println("[Reduce 48]");:}
 ;
-Prototype ::= Type _id _leftparen Formals _rightparen _semicolon {:System.out.println("Prototype ::= Type _id _leftparen Formals _rightparen _semicolon");:}
-	    | _id _id _leftparen Formals _rightparen _semicolon {:System.out.println("Prototype ::= _id _id _leftparen Formals _rightparen _semicolon");:}
-	    | _void _id _leftparen Formals _rightparen _semicolon {:System.out.println("Prototype ::= _void _id _leftparen Formals _rightparen _semicolon");:}
-	    | Type _id _leftparen _rightparen _semicolon {:System.out.println("Prototype ::= Type _id _leftparen _rightparen _semicolon");:}
-	    | _id _id _leftparen _rightparen _semicolon {:System.out.println("Prototype ::= _id _id _leftparen _rightparen _semicolon");:}
-	    | _void _id _leftparen _rightparen _semicolon {:System.out.println("Prototype ::= _void _id _leftparen _rightparen _semicolon");:}
+Prototype ::= Type _id _leftparen Formals _rightparen _semicolon {:System.out.println("[Reduce 49]");:}
+	    | _id _id _leftparen Formals _rightparen _semicolon {:System.out.println("[Reduce 50]");:}
+	    | _void _id _leftparen Formals _rightparen _semicolon {:System.out.println("[Reduce 51]");:}
+	    | Type _id _leftparen _rightparen _semicolon {:System.out.println("[Reduce 52]");:}
+	    | _id _id _leftparen _rightparen _semicolon {:System.out.println("[Reduce 53]");:}
+	    | _void _id _leftparen _rightparen _semicolon {:System.out.println("[Reduce 54]");:}
 ;
-StmtBlock ::= _leftbrace MultipleVariableDecl MultipleStmt _rightbrace {:System.out.println("StmtBlock ::= _leftbrace MultipleVariableDecl MultipleStmt _rightbrace");:}
-	    | _leftbrace MultipleVariableDecl _rightbrace {:System.out.println("StmtBlock ::= _leftbrace MultipleVariableDecl _rightbrace");:}
-	    | _leftbrace MultipleStmt _rightbrace {:System.out.println("StmtBlock ::= _leftbrace MultipleStmt _rightbrace");:}
-	    | _leftbrace _rightbrace {:System.out.println("StmtBlock ::= _leftbrace _rightbrace");:}
+StmtBlock ::= _leftbrace MultipleVariableDecl MultipleStmt _rightbrace {:System.out.println("[Reduce 55]");:}
+	    | _leftbrace MultipleVariableDecl _rightbrace {:System.out.println("[Reduce 56]");:}
+	    | _leftbrace MultipleStmt _rightbrace {:System.out.println("[Reduce 57]");:}
+	    | _leftbrace _rightbrace {:System.out.println("[Reduce 58]");:}
 ;
-MultipleVariableDecl ::= MultipleVariableDecl VariableDecl {:System.out.println("MultipleVariableDecl ::= MultipleVariableDecl VariableDecl");:}
-		       | VariableDecl {:System.out.println("MultipleVariableDecl ::= VariableDecl");:}
+MultipleVariableDecl ::= MultipleVariableDecl VariableDecl {:System.out.println("[Reduce 59]");:}
+		       | VariableDecl {:System.out.println("[Reduce 60]");:}
 ;
-MultipleStmt ::= MultipleStmt Stmt {:System.out.println("MultipleStmt ::= MultipleStmt Stmt");:}
-	       | Stmt {:System.out.println("MultipleStmt ::= Stmt");:}
+MultipleStmt ::= MultipleStmt Stmt {:System.out.println("[Reduce 61]");:}
+	       | Stmt {:System.out.println("[Reduce 62]");:}
 ;
-Stmt ::= _semicolon {:System.out.println("Stmt ::= _semicolon");:}
-       | Expr _semicolon {:System.out.println("Stmt ::= Expr _semicolon");:}
-       | IfStmt {:System.out.println("Stmt ::= IfStmt");:}
-       | WhileStmt {:System.out.println("Stmt ::= WhileStmt");:}
-       | ForStmt {:System.out.println("Stmt ::= ForStmt");:}
-       | BreakStmt {:System.out.println("Stmt ::= BreakStmt");:}
-       | ReturnStmt {:System.out.println("Stmt ::= ReturnStmt");:}
-       | PrintStmt {:System.out.println("Stmt ::= PrintStmt");:}
-       | StmtBlock {:System.out.println("Stmt ::= StmtBlock");:}
+Stmt ::= _semicolon {:System.out.println("[Reduce 63]");:}
+       | Expr _semicolon {:System.out.println("[Reduce 64]");:}
+       | IfStmt {:System.out.println("[Reduce 65]");:}
+       | WhileStmt {:System.out.println("[Reduce 66]");:}
+       | ForStmt {:System.out.println("[Reduce 67]");:}
+       | BreakStmt {:System.out.println("[Reduce 68]");:}
+       | ReturnStmt {:System.out.println("[Reduce 69]");:}
+       | PrintStmt {:System.out.println("[Reduce 70]");:}
+       | StmtBlock {:System.out.println("[Reduce 71]");:}
 ;
-IfStmt ::= _if _leftparen Expr _rightparen Stmt %prec _no_else 
-	 | _if _leftparen Expr _rightparen Stmt _else Stmt {:System.out.println("IfStmt ::= _if _leftparen Expr _rightparen Stmt _else Stmt");:}
+IfStmt ::= _if _leftparen Expr _rightparen Stmt {:System.out.println("[Reduce 72]");:} %prec _no_else 
+	 | _if _leftparen Expr _rightparen Stmt _else Stmt {:System.out.println("[Reduce 73]");:}
 ;
-WhileStmt ::= _while _leftparen Expr _rightparen Stmt{:System.out.println("WhileStmt ::= _while _leftparen Expr _rightparen Stm");:}
+WhileStmt ::= _while _leftparen Expr _rightparen Stmt{:System.out.println("[Reduce 74]");:}
 ;
-ForStmt ::= _for _leftparen _semicolon Expr _semicolon _rightparen Stmt{:System.out.println("ForStmt ::= _for _leftparen _semicolon Expr _semicolon _rightparen Stm");:}
-	  | _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stmt{:System.out.println("ForStmt ::= _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stm");:}
-	  | _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stmt{:System.out.println("ForStmt ::= _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stm");:}
-	  | _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stmt{:System.out.println("ForStmt ::= _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stm");:}
+ForStmt ::= _for _leftparen _semicolon Expr _semicolon _rightparen Stmt{:System.out.println("[Reduce 75]");:}
+	  | _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stmt{:System.out.println("[Reduce 76]");:}
+	  | _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stmt{:System.out.println("[Reduce 77]");:}
+	  | _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stmt{:System.out.println("[Reduce 78]");:}
 ;
-BreakStmt ::= _break _semicolon{:System.out.println("BreakStmt ::= _break _semicolo");:}
+BreakStmt ::= _break _semicolon{:System.out.println("[Reduce 79]");:}
 ;
-ReturnStmt ::= _return _semicolon{:System.out.println("ReturnStmt ::= _return _semicolo");:}
-	     | _return Expr _semicolon{:System.out.println("ReturnStmt ::= _return Expr _semicolo");:}
+ReturnStmt ::= _return _semicolon{:System.out.println("[Reduce 80]");:}
+	     | _return Expr _semicolon{:System.out.println("[Reduce 81]");:}
 ;
-PrintStmt ::= _println _leftparen ExprListItem _rightparen _semicolon{:System.out.println("PrintStmt ::= _println _leftparen ExprListItem _rightparen _semicolo");:}
+PrintStmt ::= _println _leftparen ExprListItem _rightparen _semicolon{:System.out.println("[Reduce 82]");:}
 ;
-ExprListItem ::= Expr _comma ExprListItem{:System.out.println("ExprListItem ::= Expr _comma ExprListIte");:}
-	       | Expr{:System.out.println("ExprListItem ::= Exp");:}
+ExprListItem ::= Expr _comma ExprListItem{:System.out.println("[Reduce 83]");:}
+	       | Expr{:System.out.println("[Reduce 84]");:}
 ;
-Expr ::= Lvalue _assignop Expr{:System.out.println("Expr ::= Lvalue _assignop Expr");:}
-       | _id _assignop Expr{:System.out.println("Expr ::= _id _assignop Expr");:}
-       | Constant{:System.out.println("Expr ::= Constant");:}
-       | Lvalue{:System.out.println("Expr ::= Lvalue");:}
-       | _id{:System.out.println("Expr ::= _id");:}
-       | Call{:System.out.println("Expr ::= Call");:}
-       | _leftparen Expr _rightparen{:System.out.println("Expr ::= _leftparen Expr _rightparen");:}
-       | Expr _plus Expr{:System.out.println("Expr ::= Expr _plus Expr");:}
-       | Expr _minus Expr{:System.out.println("Expr ::= Expr _minus Expr");:}
-       | Expr _multiplication Expr{:System.out.println("Expr ::= Expr _multiplication Expr");:}
-       | Expr _division Expr{:System.out.println("Expr ::= Expr _division Expr");:}
-       | Expr _mod Expr{:System.out.println("Expr ::= Expr _mod Expr");:}
-       | _minus Expr %prec _uminus
-       | Expr _less Expr{:System.out.println("Expr ::= Expr _less Expr");:}
-       | Expr _lessequal Expr{:System.out.println("Expr ::= Expr _lessequal Expr");:}
-       | Expr _greater Expr{:System.out.println("Expr ::= Expr _greater Expr");:}
-       | Expr _greaterequal Expr{:System.out.println("Expr ::= Expr _greaterequal Expr");:}
-       | Expr _equal Expr{:System.out.println("Expr ::= Expr _equal Expr");:}
-       | Expr _notequal Expr{:System.out.println("Expr ::= Expr _notequal Expr");:}
-       | Expr _and Expr{:System.out.println("Expr ::= Expr _and Expr");:}
-       | Expr _or Expr{:System.out.println("Expr ::= Expr _or Expr");:}
-       | _not Expr{:System.out.println("Expr ::= _not Expr");:}
-       | _readln _leftparen _rightparen{:System.out.println("Expr ::= _readln _leftparen _rightparen");:}
-       | _newarray _leftparen _intconstant _comma Type _rightparen{:System.out.println("Expr ::= _newarray _leftparen _intconstant _comma Type _rightparen");:}
-       | _newarray _leftparen _intconstant _comma _id _rightparen{:System.out.println("Expr ::= _newarray _leftparen _intconstant _comma _id _rightparen");:}
+Expr ::= Lvalue _assignop Expr{:System.out.println("[Reduce 85]");:}
+       | _id _assignop Expr{:System.out.println("[Reduce 86]");:}
+       | Constant{:System.out.println("[Reduce 87]");:}
+       | Lvalue{:System.out.println("[Reduce 88]");:}
+       | _id{:System.out.println("[Reduce 89]");:}
+       | Call{:System.out.println("[Reduce 90]");:}
+       | _leftparen Expr _rightparen{:System.out.println("[Reduce 91]");:}
+       | Expr _plus Expr{:System.out.println("[Reduce 92]");:}
+       | Expr _minus Expr{:System.out.println("[Reduce 93]");:}
+       | Expr _multiplication Expr{:System.out.println("[Reduce 94]");:}
+       | Expr _division Expr{:System.out.println("[Reduce 95]");:}
+       | Expr _mod Expr{:System.out.println("[Reduce 96]");:}
+       | _minus Expr{:System.out.println("[Reduce 97]");:}%prec _uminus
+       | Expr _less Expr{:System.out.println("[Reduce 98]");:}
+       | Expr _lessequal Expr{:System.out.println("[Reduce 99]");:}
+       | Expr _greater Expr{:System.out.println("[Reduce 100]");:}
+       | Expr _greaterequal Expr{:System.out.println("[Reduce 101]");:}
+       | Expr _equal Expr{:System.out.println("[Reduce 102]");:}
+       | Expr _notequal Expr{:System.out.println("[Reduce 103]");:}
+       | Expr _and Expr{:System.out.println("[Reduce 104]");:}
+       | Expr _or Expr{:System.out.println("[Reduce 105]");:}
+       | _not Expr{:System.out.println("[Reduce 106]");:}
+       | _readln _leftparen _rightparen{:System.out.println("[Reduce 107]");:}
+       | _newarray _leftparen _intconstant _comma Type _rightparen{:System.out.println("[Reduce 108]");:}
+       | _newarray _leftparen _intconstant _comma _id _rightparen{:System.out.println("[Reduce 109]");:}
 ;
-Lvalue ::= Lvalue _leftbracket Expr _rightbracket{:System.out.println("Lvalue ::= Lvalue _leftbracket Expr _rightbracket");:}
-	 | Lvalue _period _id{:System.out.println("Lvalue ::= Lvalue _period _id");:}
-	 | IDperiodID
-	 | Extra Expr _rightbracket{:System.out.println("Lvalue ::= Extra Expr _rightbracket");:}
+Lvalue ::= Lvalue _leftbracket Expr _rightbracket{:System.out.println("[Reduce 110]");:}
+	 | Lvalue _period _id{:System.out.println("[Reduce 111]");:}
+	 | IDperiodID{:System.out.println("[Reduce 112]");:}
+	 | Extra Expr _rightbracket{:System.out.println("[Reduce 113]");:}
 ;
-IDperiodID ::= _id _period _id
+IDperiodID ::= _id _period _id{:System.out.println("[Reduce 114]");:}
 ;
-Call ::= _id _leftparen Actuals _rightparen{:System.out.println("Call ::= _id _leftparen Actuals _rightparen");:}
-       | IDperiodID _leftparen Actuals _rightparen{:System.out.println("Call ::= _id _period _id _leftparen Actuals _rightparen");:}
-       | _id _leftparen _rightparen{:System.out.println("Call ::= _id _leftparen _rightparen");:}
-       | IDperiodID _leftparen _rightparen{:System.out.println("Call ::= _id _period _id _leftparen _rightparen");:}
+Call ::= _id _leftparen Actuals _rightparen{:System.out.println("[Reduce 115]");:}
+       | IDperiodID _leftparen Actuals _rightparen{:System.out.println("[Reduce 116]");:}
+       | _id _leftparen _rightparen{:System.out.println("[Reduce 117]");:}
+       | IDperiodID _leftparen _rightparen{:System.out.println("[Reduce 118]");:}
 ;
-Actuals ::= ExprListItem{:System.out.println("Actuals ::= ExprListItem");:}
+Actuals ::= ExprListItem{:System.out.println("[Reduce 119]");:}
 ;
-Constant ::= _intconstant {:System.out.println("Constant ::= _intconstant");:}
-	   | _doubleconstant{:System.out.println("Constant ::= _doubleconstant");:}
-	   | _stringconstant{:System.out.println("Constant ::= _stringconstant");:}
-	   | _booleanconstant{:System.out.println("Constant ::= _booleanconstant");:}
+Constant ::= _intconstant {:System.out.println("[Reduce 120]");:}
+	   | _doubleconstant{:System.out.println("[Reduce 121]");:}
+	   | _stringconstant{:System.out.println("[Reduce 122]");:}
+	   | _booleanconstant{:System.out.println("[Reduce 123]");:}
 ;
