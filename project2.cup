@@ -1,0 +1,294 @@
+
+/* Simple +/-/* expression language; parser evaluates constant expressions on the fly*/
+import java_cup.runtime.*;
+import java.io.*;
+import java_cup.runtime.ScannerBuffer;
+
+parser code {:
+    public Parser ( Lexer lex, ComplexSymbolFactory sf ) {
+	super( lex, sf );
+    }
+
+    public static void main( String[] args ) throws Exception {
+	ComplexSymbolFactory csf = new ComplexSymbolFactory();
+	ScannerBuffer buff = new ScannerBuffer( new Lexer( new BufferedReader( new InputStreamReader( System.in ) ), csf ) );
+	Parser p = new Parser( buff, csf );
+	try{
+		p.parse();
+	}catch(Exception e){
+		System.out.println("[Reject]");
+	}
+    }
+
+:}
+
+/* define how to connect to the scanner! */
+//init with {: s.init(); :};
+//scan with {: return s.next_token(); :};
+
+/* Terminals (tokens returned by the scanner). */
+terminal	_boolean,
+		_break,
+		_class,
+		_double,
+		_else,
+		_no_else,
+		_extends,
+		_for,
+		_if,
+		_implements,
+		_int,
+		_interface,
+		_newarray,
+		_println,
+		_readln,
+		_return,
+		_string,
+		_void,
+		_while,
+		_plus,
+		_minus,
+		_uminus,
+		_multiplication,
+		_division,
+		_mod,
+		_less,
+		_lessequal,
+		_greater,
+		_greaterequal,
+		_equal,
+		_notequal,
+		_and,
+		_or,
+		_not,
+		_assignop,
+		_semicolon,
+		_comma,
+		_period,
+		_leftparen,
+		_rightparen,
+		_leftbracket,
+		_rightbracket,
+		_leftbrace,
+		_rightbrace,
+		_intconstant,
+		_doubleconstant,
+		_stringconstant,
+		_booleanconstant,
+		_id;
+
+/* Non terminals */
+non terminal	    Program,
+		    Decl,
+		    VariableDecl,
+		    Variable,
+		    Type,
+		    FunctionDecl,
+		    Formals,
+		    ClassDecl,
+		    IdListItem,
+		    Field,
+		    InterfaceDecl,
+		    MultiplePrototype,
+		    Prototype,
+		    StmtBlock,
+		    MultipleVariableDecl,
+		    MultipleStmt,
+		    Stmt,
+		    IfStmt,
+		    WhileStmt,
+		    ForStmt,
+		    BreakStmt,
+		    ReturnStmt,
+		    PrintStmt,
+		    ExprListItem,
+		    Expr,
+		    Lvalue,
+		    Call,
+		    Actuals,
+		    Constant,
+		    Extra,
+		    IDperiodID;
+
+/* Precedences */
+precedence nonassoc _no_else;
+precedence nonassoc _else;
+
+precedence left _assignop;
+precedence left _or;
+precedence left _and;
+precedence left _equal,
+		_notequal;
+precedence left _less,
+		_lessequal,
+		_greater,
+		_greaterequal;
+precedence left _plus,
+		_minus;
+precedence left _multiplication,
+		_division,
+		_mod;
+precedence left _not,
+		_uminus;
+precedence left _leftbrace,
+		_rightbrace,
+		_period;
+
+/* The grammar rules */
+Program ::= Decl {:
+    System.out.print( cur_token.toString() );
+    System.out.println("[Reduce 1]");
+    :}
+;
+Decl ::= VariableDecl Decl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 2]");:}
+       | FunctionDecl Decl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 3]");:}
+       | ClassDecl Decl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 4]");:}
+       | InterfaceDecl Decl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 5]");:}
+       | VariableDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 6]");:}
+       | FunctionDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 7]");:}
+       | ClassDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 8]");:}
+       | InterfaceDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 9]");:}
+;
+VariableDecl ::= Variable _semicolon {:System.out.print( cur_token.toString() );System.out.println("[Reduce 10]");:}
+;
+Variable ::= Type _id {:System.out.print( cur_token.toString() );System.out.println("[Reduce 11]");:}
+	   | _id _id {:System.out.print( cur_token.toString() );System.out.println("[Reduce 12]");:}
+;
+Extra ::= _id _leftbracket {:System.out.print( cur_token.toString() );System.out.println("[Reduce 13]");:}
+;
+Type ::= _int {:System.out.print( cur_token.toString() );System.out.println("[Reduce 14]");:}
+       | _double {:System.out.print( cur_token.toString() );System.out.println("[Reduce 15]");:}
+       | _boolean {:System.out.print( cur_token.toString() );System.out.println("[Reduce 16]");:}
+       | _string {:System.out.print( cur_token.toString() );System.out.println("[Reduce 17]");:}
+       | Type _leftbracket _rightbracket {:System.out.print( cur_token.toString() );System.out.println("[Reduce 18]");:}
+       | Extra _rightbracket {:System.out.print( cur_token.toString() );System.out.println("[Reduce 19]");:}
+;
+FunctionDecl ::= Type _id _leftparen Formals _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 20]");:}
+	       | _id _id _leftparen Formals _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 21]");:}
+	       | _void _id _leftparen Formals _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 22]");:}
+	       | Type _id _leftparen _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 23]");:}
+	       | _id _id _leftparen _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 24]");:}
+	       | _void _id _leftparen _rightparen StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 25]");:}
+;
+Formals ::= Variable {:System.out.print( cur_token.toString() );System.out.println("[Reduce 26]");:}
+	  | Variable _comma Formals {:System.out.print( cur_token.toString() );System.out.println("[Reduce 27]");:}
+;
+ClassDecl ::= _class _id _leftbrace Field _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 28]");:}
+	    | _class _id _extends _id _leftbrace Field _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 29]");:}
+	    | _class _id _implements IdListItem _leftbrace Field _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 30]");:}
+	    | _class _id _implements _id _leftbrace Field _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 31]");:}
+	    | _class _id _extends _id _implements IdListItem _leftbrace Field _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 32]");:}
+	    | _class _id _extends _id _implements _id _leftbrace Field _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 33]");:}
+	    | _class _id _leftbrace _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 34]");:}
+	    | _class _id _extends _id _leftbrace _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 35]");:}
+	    | _class _id _implements IdListItem _leftbrace _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 36]");:}
+	    | _class _id _implements _id _leftbrace _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 37]");:}
+	    | _class _id _extends _id _implements IdListItem _leftbrace _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 38]");:}
+	    | _class _id _extends _id _implements _id _leftbrace _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 39]");:}
+;
+IdListItem ::= _id _comma IdListItem {:System.out.print( cur_token.toString() );System.out.println("[Reduce 40]");:}
+;
+Field ::= VariableDecl Field {:System.out.print( cur_token.toString() );System.out.println("[Reduce 41]");:}
+	| FunctionDecl Field {:System.out.print( cur_token.toString() );System.out.println("[Reduce 42]");:}
+	| VariableDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 43]");:}
+	| FunctionDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 44]");:}
+;
+InterfaceDecl ::= _interface _id _leftbrace MultiplePrototype _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 45]");:}
+		| _interface _id _leftbrace _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 46]");:}
+;
+MultiplePrototype ::= MultiplePrototype Prototype {:System.out.print( cur_token.toString() );System.out.println("[Reduce 47]");:}
+		    | Prototype {:System.out.print( cur_token.toString() );System.out.println("[Reduce 48]");:}
+;
+Prototype ::= Type _id _leftparen Formals _rightparen _semicolon {:System.out.print( cur_token.toString() );System.out.println("[Reduce 49]");:}
+	    | _id _id _leftparen Formals _rightparen _semicolon {:System.out.print( cur_token.toString() );System.out.println("[Reduce 50]");:}
+	    | _void _id _leftparen Formals _rightparen _semicolon {:System.out.print( cur_token.toString() );System.out.println("[Reduce 51]");:}
+	    | Type _id _leftparen _rightparen _semicolon {:System.out.print( cur_token.toString() );System.out.println("[Reduce 52]");:}
+	    | _id _id _leftparen _rightparen _semicolon {:System.out.print( cur_token.toString() );System.out.println("[Reduce 53]");:}
+	    | _void _id _leftparen _rightparen _semicolon {:System.out.print( cur_token.toString() );System.out.println("[Reduce 54]");:}
+;
+StmtBlock ::= _leftbrace MultipleVariableDecl MultipleStmt _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 55]");:}
+	    | _leftbrace MultipleVariableDecl _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 56]");:}
+	    | _leftbrace MultipleStmt _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 57]");:}
+	    | _leftbrace _rightbrace {:System.out.print( cur_token.toString() );System.out.println("[Reduce 58]");:}
+;
+MultipleVariableDecl ::= MultipleVariableDecl VariableDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 59]");:}
+		       | VariableDecl {:System.out.print( cur_token.toString() );System.out.println("[Reduce 60]");:}
+;
+MultipleStmt ::= MultipleStmt Stmt {:System.out.print( cur_token.toString() );System.out.println("[Reduce 61]");:}
+	       | Stmt {:System.out.print( cur_token.toString() );System.out.println("[Reduce 62]");:}
+;
+Stmt ::= _semicolon {:System.out.print( cur_token.toString() );System.out.println("[Reduce 63]");:}
+       | Expr _semicolon {:System.out.print( cur_token.toString() );System.out.println("[Reduce 64]");:}
+       | IfStmt {:System.out.print( cur_token.toString() );System.out.println("[Reduce 65]");:}
+       | WhileStmt {:System.out.print( cur_token.toString() );System.out.println("[Reduce 66]");:}
+       | ForStmt {:System.out.print( cur_token.toString() );System.out.println("[Reduce 67]");:}
+       | BreakStmt {:System.out.print( cur_token.toString() );System.out.println("[Reduce 68]");:}
+       | ReturnStmt {:System.out.print( cur_token.toString() );System.out.println("[Reduce 69]");:}
+       | PrintStmt {:System.out.print( cur_token.toString() );System.out.println("[Reduce 70]");:}
+       | StmtBlock {:System.out.print( cur_token.toString() );System.out.println("[Reduce 71]");:}
+;
+IfStmt ::= _if _leftparen Expr _rightparen Stmt {:System.out.print( cur_token.toString() );System.out.println("[Reduce 72]");:} %prec _no_else 
+	 | _if _leftparen Expr _rightparen Stmt _else Stmt {:System.out.print( cur_token.toString() );System.out.println("[Reduce 73]");:}
+;
+WhileStmt ::= _while _leftparen Expr _rightparen Stmt{:System.out.print( cur_token.toString() );System.out.println("[Reduce 74]");:}
+;
+ForStmt ::= _for _leftparen _semicolon Expr _semicolon _rightparen Stmt{:System.out.print( cur_token.toString() );System.out.println("[Reduce 75]");:}
+	  | _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stmt{:System.out.print( cur_token.toString() );System.out.println("[Reduce 76]");:}
+	  | _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stmt{:System.out.print( cur_token.toString() );System.out.println("[Reduce 77]");:}
+	  | _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stmt{:System.out.print( cur_token.toString() );System.out.println("[Reduce 78]");:}
+;
+BreakStmt ::= _break _semicolon{:System.out.print( cur_token.toString() );System.out.println("[Reduce 79]");:}
+;
+ReturnStmt ::= _return _semicolon{:System.out.print( cur_token.toString() );System.out.println("[Reduce 80]");:}
+	     | _return Expr _semicolon{:System.out.print( cur_token.toString() );System.out.println("[Reduce 81]");:}
+;
+PrintStmt ::= _println _leftparen ExprListItem _rightparen _semicolon{:System.out.print( cur_token.toString() );System.out.println("[Reduce 82]");:}
+;
+ExprListItem ::= Expr _comma ExprListItem{:System.out.print( cur_token.toString() );System.out.println("[Reduce 83]");:}
+	       | Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 84]");:}
+;
+Expr ::= Lvalue _assignop Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 85]");:}
+       | _id _assignop Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 86]");:}
+       | Constant{:System.out.print( cur_token.toString() );System.out.println("[Reduce 87]");:}
+       | Lvalue{:System.out.print( cur_token.toString() );System.out.println("[Reduce 88]");:}
+       | _id{:System.out.print( cur_token.toString() );System.out.println("[Reduce 89]");:}
+       | Call{:System.out.print( cur_token.toString() );System.out.println("[Reduce 90]");:}
+       | _leftparen Expr _rightparen{:System.out.print( cur_token.toString() );System.out.println("[Reduce 91]");:}
+       | Expr _plus Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 92]");:}
+       | Expr _minus Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 93]");:}
+       | Expr _multiplication Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 94]");:}
+       | Expr _division Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 95]");:}
+       | Expr _mod Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 96]");:}
+       | _minus Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 97]");:}%prec _uminus
+       | Expr _less Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 98]");:}
+       | Expr _lessequal Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 99]");:}
+       | Expr _greater Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 100]");:}
+       | Expr _greaterequal Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 101]");:}
+       | Expr _equal Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 102]");:}
+       | Expr _notequal Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 103]");:}
+       | Expr _and Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 104]");:}
+       | Expr _or Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 105]");:}
+       | _not Expr{:System.out.print( cur_token.toString() );System.out.println("[Reduce 106]");:}
+       | _readln _leftparen _rightparen{:System.out.print( cur_token.toString() );System.out.println("[Reduce 107]");:}
+       | _newarray _leftparen _intconstant _comma Type _rightparen{:System.out.print( cur_token.toString() );System.out.println("[Reduce 108]");:}
+       | _newarray _leftparen _intconstant _comma _id _rightparen{:System.out.print( cur_token.toString() );System.out.println("[Reduce 109]");:}
+;
+Lvalue ::= Lvalue _leftbracket Expr _rightbracket{:System.out.print( cur_token.toString() );System.out.println("[Reduce 110]");:}
+	 | Lvalue _period _id{:System.out.print( cur_token.toString() );System.out.println("[Reduce 111]");:}
+	 | IDperiodID{:System.out.print( cur_token.toString() );System.out.println("[Reduce 112]");:}
+	 | Extra Expr _rightbracket{:System.out.print( cur_token.toString() );System.out.println("[Reduce 113]");:}
+;
+IDperiodID ::= _id _period _id{:System.out.print( cur_token.toString() );System.out.println("[Reduce 114]");:}
+;
+Call ::= _id _leftparen Actuals _rightparen{:System.out.print( cur_token.toString() );System.out.println("[Reduce 115]");:}
+       | IDperiodID _leftparen Actuals _rightparen{:System.out.print( cur_token.toString() );System.out.println("[Reduce 116]");:}
+       | _id _leftparen _rightparen{:System.out.print( cur_token.toString() );System.out.println("[Reduce 117]");:}
+       | IDperiodID _leftparen _rightparen{:System.out.print( cur_token.toString() );System.out.println("[Reduce 118]");:}
+;
+Actuals ::= ExprListItem{:System.out.print( cur_token.toString() );System.out.println("[Reduce 119]");:}
+;
+Constant ::= _intconstant {:System.out.print( cur_token.toString() );System.out.println("[Reduce 120]");:}
+	   | _doubleconstant{:System.out.print( cur_token.toString() );System.out.println("[Reduce 121]");:}
+	   | _stringconstant{:System.out.print( cur_token.toString() );System.out.println("[Reduce 122]");:}
+	   | _booleanconstant{:System.out.print( cur_token.toString() );System.out.println("[Reduce 123]");:}
+;

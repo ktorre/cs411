@@ -1,0 +1,14 @@
+/*
+	 This is the second test file written in Toy
+	 This is an example of a multiline comment
+*/
+
+double division( double num1, double num2 ) {
+	return num1 / num2;
+}
+
+//Here is the main method and an example of a single line comment
+void main() {
+	string password = "password";
+	println( "Hello there! What is the password?" );
+	string userR;
