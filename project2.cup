@@ -13,7 +13,7 @@ parser code {:
 	ComplexSymbolFactory csf = new ComplexSymbolFactory();
 	ScannerBuffer buff = new ScannerBuffer( new Lexer( new BufferedReader( new InputStreamReader( System.in ) ), csf ) );
 	Parser p = new Parser( buff, csf );
-	p.debug_parse();
+	p.parse();
     }
 
 :}
@@ -130,7 +130,7 @@ precedence left _leftbrace,
 		_period;
 
 /* The grammar rules */
-Program ::= Decl 
+Program ::= Decl {:System.out.println("Program ::= Decl");:}
 ;
 Decl ::= VariableDecl Decl {:System.out.println("Decl ::= VariableDecl Decl");:}
        | FunctionDecl Decl {:System.out.println("Decl ::= FunctionDecl Decl");:}

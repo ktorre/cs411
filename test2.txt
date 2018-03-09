@@ -10,14 +10,14 @@ double division( double num1, double num2 ) {
 //Here is the main method and an example of a single line comment
 void main() {
 	string password;
+	string userResponse;
 	password = "password";
 	println ( "Hello there! What is the password?" );
-	//string userResponse;
 	userResponse = readln();
 	if( userResponse == password ) {
 		boolean BOOLEAN;
-		//BOOLEAN = false;
-		int number;
+		BOOLEAN = false;
+		{int number;}
 		number = 0;
 		
 		while( !BOOLEAN ) {
@@ -26,7 +26,7 @@ void main() {
 				number = number * 02;
 			}
 			else {
-				number = number % 10
+				number = number % 10;
 			}
 			if( number > 15 ) {
 				BOOLEAN = true;
@@ -38,7 +38,7 @@ void main() {
 				break;
 			}
 		}
-		
+		/*
 		int hex_int;
 		hex_int = 0x77F;
 		double double1;
@@ -49,7 +49,7 @@ void main() {
 		double3 = 19.;
 		double double4;
 		double4 = 19.0e-019;
-		
+		*/
 		if( double2 == 19.E+19 || hex_int == 0X1aB2 ) {
 			println( "Here is double2 divided by double2: ", division( double2, double1 ) );
 		}
@@ -61,9 +61,11 @@ void main() {
 	}
 }
 
-class arrayClass() {
+class arrayClass {
 	int [] arr;
-	arr = newarray( 5, int );
+	int setArray( string type ) {
+		arr = newarray( 19, type );
+	}
 }
 
 
